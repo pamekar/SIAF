@@ -1,0 +1,132 @@
+/* ========== Theme Red ================
+body class name      : .theme-red 
+dark-color : #2C2933 ;
+primary-color: #ff0024 ;
+secondary-color: #e60020 ;
+==================================== */
+/* dark color */
+.readmore,
+section.section-a .groupbox {
+  background: #2C2933; }
+
+a:hover, a:focus, a:active,
+.readmore:hover {
+  color: #2C2933; }
+
+section.section-a .groupbox .pb-center-align {
+  border-right: 1px solid #2C2933; }
+
+/* primary color */
+body.theme-red .btn-primary.disabled,
+body.theme-red .btn-primary.disabled.active,
+body.theme-red .btn-primary.disabled.focus,
+body.theme-red .btn-primary.disabled:active,
+body.theme-red .btn-primary.disabled:focus,
+body.theme-red .btn-primary.disabled:hover,
+body.theme-red .btn-primary[disabled],
+body.theme-red .btn-primary.active[disabled],
+body.theme-red .btn-primary.focus[disabled],
+body.theme-red .btn-primary[disabled]:active,
+body.theme-red .btn-primary[disabled]:focus,
+body.theme-red .btn-primary[disabled]:hover,
+body.theme-red fieldset[disabled] .btn-primary,
+body.theme-red fieldset[disabled] .btn-primary.active,
+body.theme-red fieldset[disabled] .btn-primary.focus,
+body.theme-red fieldset[disabled] .btn-primary:active,
+body.theme-red fieldset[disabled] .btn-primary:focus,
+body.theme-red fieldset[disabled] .btn-primary:hover,
+body.theme-red .btn-primary {
+  background-color: #ff0024;
+  border-color: #ff0024; }
+
+.theme-red .btn-custom,
+.theme-red .line-heading,
+.theme-red section.section-c .wrap-section-c .wsc-right,
+.theme-red section.section-c .wrap-section-c .wsc-left .wscl-wrap .box-count .bcount-left,
+.theme-red section.section-d .filter-button:hover,
+.theme-red .hovereffect p a,
+.theme-red section.section-e .layer-img-team .lit-bg,
+.theme-red section.section-e .team-carousel .item .content-img-team .info-team .it-bg,
+.theme-red section.section-e .owl-carousel .owl-nav .owl-next,
+.theme-red section.section-e .owl-carousel .owl-nav .owl-prev,
+.theme-red section.section-g .owl-theme .owl-nav [class*="owl-"]:hover,
+.theme-red section.section-g .box-on-latest-news .bs-img .bs-properties,
+.theme-red section.section-g .box-on-latest-news .bs-title .garis-50,
+.theme-red .wrap-news .more a:after,
+.theme-red .wrap-news .cat,
+.theme-red .back-to-top,
+.theme-red .style-option-wrap .style-btn-class,
+.theme-red section.inner-page-content .contact-form-content .btn {
+  background: #ff0024; }
+
+.theme-red .center-line,
+.theme-red section.section-d .filter-button.active,
+.theme-red .carousel-indicators .active {
+  background-color: #ff0024; }
+
+.theme-red .text-theme,
+.theme-red section.section-a .groupbox .icons,
+.theme-red section.section-a .groupbox .ebox .perbox .perbox-des a,
+.theme-red section.section-e .layer-img-team .lit-sosmed .team-sosmed-icon .wrap-circle-sosmed .circle-sosmed:hover,
+.theme-red footer .footer-wrap .inwrap-footer .footer-link-title,
+.theme-red .wrap-news .more a {
+  color: #ff0024; }
+
+.theme-red section.inner-page-content .contact-form-content .btn,
+.theme-red section.inner-page-content .contact-form-content .form-control:focus {
+  border-color: #ff0024; }
+
+.theme-red .line {
+  border-left: 100px solid #ff0024; }
+
+body.theme-red .form-control:focus {
+  border-color: #ff0024; }
+
+.theme-red section.section-f .carousel-indicators li {
+  border: 1px solid #ff0024; }
+
+.theme-red footer .footer-sosmed-icon .wrap-circle-sosmed .circle-sosmed {
+  border: 1px solid #ff0024; }
+
+.theme-red footer .footer-sosmed-icon .wrap-circle-sosmed .circle-sosmed:hover {
+  border: 1px solid #ff0024;
+  background: #ff0024; }
+
+.theme-red footer .fc-text.fcs-text button:hover i {
+  border: 1px solid #ff0024; }
+
+.theme-red .page-sidebar .header-sb::after {
+  border-bottom: 3px solid #ff0024; }
+
+@media screen and (min-width: 768px) {
+  .theme-red .header.sticky .nav-header .nav > li.active > a {
+    border-bottom: 5px solid #ff0024; }
+
+  .theme-red .sticky .nav-header nav .navbar-nav > li > a:hover {
+    border-bottom: 5px solid #ff0024; } }
+/* secondary-color */
+.theme-red .btn-custom:hover {
+  background: #e60020; }
+
+body.theme-red .btn-primary:hover {
+  background-color: #e60020;
+  border-color: #e60020; }
+
+.theme-red section.section-e .owl-carousel .owl-nav .owl-next:hover,
+.theme-red section.section-e .owl-carousel .owl-nav .owl-prev:hover {
+  background: #e60020; }
+
+.theme-red .page-sidebar .sidebar-menu a:hover {
+  color: #e60020; }
+
+.theme-red section.inner-page-content .contact-form-content .btn:hover {
+  background-color: #e60020; }
+
+.theme-red .back-to-top.btn-primary:hover,
+.theme-red .back-to-top.btn-primary:focus,
+.theme-red .back-to-top.btn-primary:active,
+.theme-red .back-to-top.btn-primary.active,
+.theme-red .open .back-to-top.dropdown-toggle.btn-primary {
+  background-color: #e60020; }
+
+/*# sourceMappingURL=theme-red.css.map */

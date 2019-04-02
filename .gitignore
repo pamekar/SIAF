@@ -1,9 +1,11 @@
 /.idea
 /node_modules
-/publi/assets
+/public/assets
 /public/hot
 /public/storage
-/storage/*.key
+/resources/views/home
+/resources/views/layouts/home
+/storage/*.keys
 /vendor
 .env
 .phpunit.result.cache

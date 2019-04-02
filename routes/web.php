@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -22,4 +22,9 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::get('/assets', 'HomeController@index')->name('assets');
+Route::group(['namespace'=>'Home'],function (){
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/donate', 'DonateController@index')->name('home');
+
+});
