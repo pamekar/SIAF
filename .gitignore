@@ -1,3 +1,4 @@
+/.idea
 /project/.idea
 /project/node_modules
 /project/app/Http/Controllers/Home
