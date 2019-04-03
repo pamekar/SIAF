@@ -1,0 +1,132 @@
+/* ========== Theme Purple ================
+body class name      : .theme-purple 
+dark-color : #2C2933 ;
+primary-color: #8500ae ;
+secondary-color: #700890 ;
+==================================== */
+/* dark color */
+.readmore,
+section.section-a .groupbox {
+  background: #2C2933; }
+
+a:hover, a:focus, a:active,
+.readmore:hover {
+  color: #2C2933; }
+
+section.section-a .groupbox .pb-center-align {
+  border-right: 1px solid #2C2933; }
+
+/* primary color */
+body.theme-purple .btn-primary.disabled,
+body.theme-purple .btn-primary.disabled.active,
+body.theme-purple .btn-primary.disabled.focus,
+body.theme-purple .btn-primary.disabled:active,
+body.theme-purple .btn-primary.disabled:focus,
+body.theme-purple .btn-primary.disabled:hover,
+body.theme-purple .btn-primary[disabled],
+body.theme-purple .btn-primary.active[disabled],
+body.theme-purple .btn-primary.focus[disabled],
+body.theme-purple .btn-primary[disabled]:active,
+body.theme-purple .btn-primary[disabled]:focus,
+body.theme-purple .btn-primary[disabled]:hover,
+body.theme-purple fieldset[disabled] .btn-primary,
+body.theme-purple fieldset[disabled] .btn-primary.active,
+body.theme-purple fieldset[disabled] .btn-primary.focus,
+body.theme-purple fieldset[disabled] .btn-primary:active,
+body.theme-purple fieldset[disabled] .btn-primary:focus,
+body.theme-purple fieldset[disabled] .btn-primary:hover,
+body.theme-purple .btn-primary {
+  background-color: #8500ae;
+  border-color: #8500ae; }
+
+.theme-purple .btn-custom,
+.theme-purple .line-heading,
+.theme-purple section.section-c .wrap-section-c .wsc-right,
+.theme-purple section.section-c .wrap-section-c .wsc-left .wscl-wrap .box-count .bcount-left,
+.theme-purple section.section-d .filter-button:hover,
+.theme-purple .hovereffect p a,
+.theme-purple section.section-e .layer-img-team .lit-bg,
+.theme-purple section.section-e .team-carousel .item .content-img-team .info-team .it-bg,
+.theme-purple section.section-e .owl-carousel .owl-nav .owl-next,
+.theme-purple section.section-e .owl-carousel .owl-nav .owl-prev,
+.theme-purple section.section-g .owl-theme .owl-nav [class*="owl-"]:hover,
+.theme-purple section.section-g .box-on-latest-news .bs-img .bs-properties,
+.theme-purple section.section-g .box-on-latest-news .bs-title .garis-50,
+.theme-purple .wrap-news .more a:after,
+.theme-purple .wrap-news .cat,
+.theme-purple .back-to-top,
+.theme-purple .style-option-wrap .style-btn-class,
+.theme-purple section.inner-page-content .contact-form-content .btn {
+  background: #8500ae; }
+
+.theme-purple .center-line,
+.theme-purple section.section-d .filter-button.active,
+.theme-purple .carousel-indicators .active {
+  background-color: #8500ae; }
+
+.theme-purple .text-theme,
+.theme-purple section.section-a .groupbox .icons,
+.theme-purple section.section-a .groupbox .ebox .perbox .perbox-des a,
+.theme-purple section.section-e .layer-img-team .lit-sosmed .team-sosmed-icon .wrap-circle-sosmed .circle-sosmed:hover,
+.theme-purple footer .footer-wrap .inwrap-footer .footer-link-title,
+.theme-purple .wrap-news .more a {
+  color: #8500ae; }
+
+.theme-purple section.inner-page-content .contact-form-content .btn,
+.theme-purple section.inner-page-content .contact-form-content .form-control:focus {
+  border-color: #8500ae; }
+
+.theme-purple .line {
+  border-left: 100px solid #8500ae; }
+
+body.theme-purple .form-control:focus {
+  border-color: #8500ae; }
+
+.theme-purple section.section-f .carousel-indicators li {
+  border: 1px solid #8500ae; }
+
+.theme-purple footer .footer-sosmed-icon .wrap-circle-sosmed .circle-sosmed {
+  border: 1px solid #8500ae; }
+
+.theme-purple footer .footer-sosmed-icon .wrap-circle-sosmed .circle-sosmed:hover {
+  border: 1px solid #8500ae;
+  background: #8500ae; }
+
+.theme-purple footer .fc-text.fcs-text button:hover i {
+  border: 1px solid #8500ae; }
+
+.theme-purple .page-sidebar .header-sb::after {
+  border-bottom: 3px solid #8500ae; }
+
+@media screen and (min-width: 768px) {
+  .theme-purple .header.sticky .nav-header .nav > li.active > a {
+    border-bottom: 5px solid #8500ae; }
+
+  .theme-purple .sticky .nav-header nav .navbar-nav > li > a:hover {
+    border-bottom: 5px solid #8500ae; } }
+/* secondary-color */
+.theme-purple .btn-custom:hover {
+  background: #700890; }
+
+body.theme-purple .btn-primary:hover {
+  background-color: #700890;
+  border-color: #700890; }
+
+.theme-purple section.section-e .owl-carousel .owl-nav .owl-next:hover,
+.theme-purple section.section-e .owl-carousel .owl-nav .owl-prev:hover {
+  background: #700890; }
+
+.theme-purple .page-sidebar .sidebar-menu a:hover {
+  color: #700890; }
+
+.theme-purple section.inner-page-content .contact-form-content .btn:hover {
+  background-color: #700890; }
+
+.theme-purple .back-to-top.btn-primary:hover,
+.theme-purple .back-to-top.btn-primary:focus,
+.theme-purple .back-to-top.btn-primary:active,
+.theme-purple .back-to-top.btn-primary.active,
+.theme-purple .open .back-to-top.dropdown-toggle.btn-primary {
+  background-color: #700890; }
+
+/*# sourceMappingURL=theme-purple.css.map */

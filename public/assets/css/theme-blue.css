@@ -1,0 +1,132 @@
+/* ========== Theme Blue ================
+body class name      : .theme-blue  
+dark-color : #2C2933 ;
+primary-color: #3335c3 ;
+secondary-color: #1d1fa8 ;
+==================================== */
+/* dark color */
+.readmore,
+section.section-a .groupbox {
+  background: #2C2933; }
+
+a:hover, a:focus, a:active,
+.readmore:hover {
+  color: #2C2933; }
+
+section.section-a .groupbox .pb-center-align {
+  border-right: 1px solid #2C2933; }
+
+/* primary color */
+body.theme-blue .btn-primary.disabled,
+body.theme-blue .btn-primary.disabled.active,
+body.theme-blue .btn-primary.disabled.focus,
+body.theme-blue .btn-primary.disabled:active,
+body.theme-blue .btn-primary.disabled:focus,
+body.theme-blue .btn-primary.disabled:hover,
+body.theme-blue .btn-primary[disabled],
+body.theme-blue .btn-primary.active[disabled],
+body.theme-blue .btn-primary.focus[disabled],
+body.theme-blue .btn-primary[disabled]:active,
+body.theme-blue .btn-primary[disabled]:focus,
+body.theme-blue .btn-primary[disabled]:hover,
+body.theme-blue fieldset[disabled] .btn-primary,
+body.theme-blue fieldset[disabled] .btn-primary.active,
+body.theme-blue fieldset[disabled] .btn-primary.focus,
+body.theme-blue fieldset[disabled] .btn-primary:active,
+body.theme-blue fieldset[disabled] .btn-primary:focus,
+body.theme-blue fieldset[disabled] .btn-primary:hover,
+body.theme-blue .btn-primary {
+  background-color: #3335c3;
+  border-color: #3335c3; }
+
+.theme-blue .btn-custom,
+.theme-blue .line-heading,
+.theme-blue section.section-c .wrap-section-c .wsc-right,
+.theme-blue section.section-c .wrap-section-c .wsc-left .wscl-wrap .box-count .bcount-left,
+.theme-blue section.section-d .filter-button:hover,
+.theme-blue .hovereffect p a,
+.theme-blue section.section-e .layer-img-team .lit-bg,
+.theme-blue section.section-e .team-carousel .item .content-img-team .info-team .it-bg,
+.theme-blue section.section-e .owl-carousel .owl-nav .owl-next,
+.theme-blue section.section-e .owl-carousel .owl-nav .owl-prev,
+.theme-blue section.section-g .owl-theme .owl-nav [class*="owl-"]:hover,
+.theme-blue section.section-g .box-on-latest-news .bs-img .bs-properties,
+.theme-blue section.section-g .box-on-latest-news .bs-title .garis-50,
+.theme-blue .wrap-news .more a:after,
+.theme-blue .wrap-news .cat,
+.theme-blue .back-to-top,
+.theme-blue .style-option-wrap .style-btn-class,
+.theme-blue section.inner-page-content .contact-form-content .btn {
+  background: #3335c3; }
+
+.theme-blue .center-line,
+.theme-blue section.section-d .filter-button.active,
+.theme-blue .carousel-indicators .active {
+  background-color: #3335c3; }
+
+.theme-blue .text-theme,
+.theme-blue section.section-a .groupbox .icons,
+.theme-blue section.section-a .groupbox .ebox .perbox .perbox-des a,
+.theme-blue section.section-e .layer-img-team .lit-sosmed .team-sosmed-icon .wrap-circle-sosmed .circle-sosmed:hover,
+.theme-blue footer .footer-wrap .inwrap-footer .footer-link-title,
+.theme-blue .wrap-news .more a {
+  color: #3335c3; }
+
+.theme-blue section.inner-page-content .contact-form-content .btn,
+.theme-blue section.inner-page-content .contact-form-content .form-control:focus {
+  border-color: #3335c3; }
+
+.theme-blue .line {
+  border-left: 100px solid #3335c3; }
+
+body.theme-blue .form-control:focus {
+  border-color: #3335c3; }
+
+.theme-blue section.section-f .carousel-indicators li {
+  border: 1px solid #3335c3; }
+
+.theme-blue footer .footer-sosmed-icon .wrap-circle-sosmed .circle-sosmed {
+  border: 1px solid #3335c3; }
+
+.theme-blue footer .footer-sosmed-icon .wrap-circle-sosmed .circle-sosmed:hover {
+  border: 1px solid #3335c3;
+  background: #3335c3; }
+
+.theme-blue footer .fc-text.fcs-text button:hover i {
+  border: 1px solid #3335c3; }
+
+.theme-blue .page-sidebar .header-sb::after {
+  border-bottom: 3px solid #3335c3; }
+
+@media screen and (min-width: 768px) {
+  .theme-blue .header.sticky .nav-header .nav > li.active > a {
+    border-bottom: 5px solid #3335c3; }
+
+  .theme-blue .sticky .nav-header nav .navbar-nav > li > a:hover {
+    border-bottom: 5px solid #3335c3; } }
+/* secondary-color */
+.theme-blue .btn-custom:hover {
+  background: #1d1fa8; }
+
+body.theme-blue .btn-primary:hover {
+  background-color: #1d1fa8;
+  border-color: #1d1fa8; }
+
+.theme-blue section.section-e .owl-carousel .owl-nav .owl-next:hover,
+.theme-blue section.section-e .owl-carousel .owl-nav .owl-prev:hover {
+  background: #1d1fa8; }
+
+.theme-blue .page-sidebar .sidebar-menu a:hover {
+  color: #1d1fa8; }
+
+.theme-blue section.inner-page-content .contact-form-content .btn:hover {
+  background-color: #1d1fa8; }
+
+.theme-blue .back-to-top.btn-primary:hover,
+.theme-blue .back-to-top.btn-primary:focus,
+.theme-blue .back-to-top.btn-primary:active,
+.theme-blue .back-to-top.btn-primary.active,
+.theme-blue .open .back-to-top.dropdown-toggle.btn-primary {
+  background-color: #1d1fa8; }
+
+/*# sourceMappingURL=theme-blue.css.map */
