@@ -107,7 +107,8 @@ class ComplaintsTableSeeder extends Seeder
                 'location'     => $faker->address,
                 'tags'         => $faker->randomElement($tags),
                 'status'       => $status,
-                'occurred_at'=>$faker->dateTimeBetween('-5 years','now')
+                'remark'       => $faker->paragraphs(10, true),
+                'occurred_at'=>$faker->dateTimeBetween('-5 years', 'now')
             ]);
         }
     }

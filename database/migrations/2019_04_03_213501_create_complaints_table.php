@@ -24,6 +24,7 @@ class CreateComplaintsTable extends Migration
             $table->string('location');
             $table->text('tags');
             $table->enum('status',['pending','resolved','closed']);
+            $table->longText('remark');
             $table->timestamp('occurred_at');
             $table->timestamps();
         });
