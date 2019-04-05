@@ -15,13 +15,15 @@ class CreateContributionsTable extends Migration
     {
         Schema::create('contributions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('reference_id');
             $table->text('note');
             $table->integer('amount');
             $table->string('gateway');
             $table->enum('status', ['pending', 'successful', 'failed']);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

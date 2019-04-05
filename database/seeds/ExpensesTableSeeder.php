@@ -25,7 +25,7 @@ class ExpensesTableSeeder extends Seeder
                     ? $averageExpense - mt_rand(1, 1000) * 10000 * mt_rand(3,
                         6)
                     : ($faker->boolean()
-                        ? $averageExpense + mt_rand(1, 1000)
+                        ? $averageExpense + mt_rand(1, 500)
                         * 10000 * mt_rand(1, 3)
                         : $averageExpense - mt_rand(1, 1000) * 10000
                         * mt_rand(1,

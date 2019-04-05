@@ -15,8 +15,8 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('complaint_id');
-            $table->integer('user_id');
+            $table->string('reference_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->longText('description');
             $table->string('type');
@@ -24,9 +24,10 @@ class CreateComplaintsTable extends Migration
             $table->string('location');
             $table->text('tags');
             $table->enum('status',['pending','resolved','closed']);
-            $table->longText('remark');
             $table->timestamp('occurred_at');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

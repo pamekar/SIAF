@@ -15,13 +15,16 @@ class CreateExpensesTable extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
-            $table->integer('complaints_id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('complaint_id');
             $table->string('title');
             $table->text('detail');
             $table->integer('amount');
             $table->timestamp('occurred_at');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('complaint_id')->references('id')->on('complaints')->onDelete('cascade');
+
         });
     }
 

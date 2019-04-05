@@ -26,7 +26,7 @@ class ContributionsTableSeeder extends Seeder
                 'user_id' => $user,
                 'reference_id' => md5($user * $index),
                 'note' => $faker->realText(),
-                'amount' => mt_rand(1, 1000) * 100000,
+                'amount' => mt_rand(1, 500) * 100000,
                 'gateway' => $faker->randomElement([
                     'paystack',
                     'rave',

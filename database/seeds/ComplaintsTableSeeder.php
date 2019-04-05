@@ -89,6 +89,7 @@ class ComplaintsTableSeeder extends Seeder
 
         // drg >> get array of random users
         $users = \App\User::inRandomOrder()->limit(347)->pluck('id');
+        $admin = \App\User::where('role_id', 1)->value('id');
 
         $n = 4127;
         // drg >> Create $n numbers of contributions
@@ -96,10 +97,10 @@ class ComplaintsTableSeeder extends Seeder
         foreach (range(1, $n) as $index) {
             $user = $faker->randomElement($users);
             $status = $index % 2 === 0 ? 'resolved'
-                : ($index % 2 === 3 ? 'closed' : 'pending');
-            \App\Complaint::create([
+                : ($index % 3 === 0 ? 'closed' : 'pending');
+            $complaint = \App\Complaint::create([
                 'user_id'      => $user,
-                'complaint_id' => \Illuminate\Support\Str::random(6) . $index,
+                'reference_id' => \Illuminate\Support\Str::random(6) . $index,
                 'title'        => $faker->realText(60),
                 'description'  => $faker->paragraph(20),
                 'type'         => $faker->randomElement($types),
@@ -107,9 +108,15 @@ class ComplaintsTableSeeder extends Seeder
                 'location'     => $faker->address,
                 'tags'         => $faker->randomElement($tags),
                 'status'       => $status,
-                'remark'       => $faker->paragraphs(10, true),
-                'occurred_at'=>$faker->dateTimeBetween('-5 years', 'now')
+                'occurred_at'  => $faker->dateTimeBetween('-5 years', 'now')
             ]);
+            foreach (range(1, 2) as $index) {
+                \App\Remark::create([
+                    'user_id'      => $admin,
+                    'complaint_id' => $complaint->id,
+                    'description'  => $faker->realText()
+                ]);
+            }
         }
     }
 }
