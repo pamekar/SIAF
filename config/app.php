@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'repository' => env('APP_repository', 'http://github.com/pamekar/SIAF'),
+    'repository' => env('APP_REPOSITORY', 'http://github.com/pamekar/SIAF'),
 
     /*
     |--------------------------------------------------------------------------
