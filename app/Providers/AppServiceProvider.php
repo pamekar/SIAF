@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
-        $public = config('app.env') == 'production' && config('app.shared_hosting') ? '/main/public' : '';
+        $public = config('app.env') == 'production' && config('app. shared_hosting') ? '/main/public' : '';
 
         View::share([
             'public'     => $public,
