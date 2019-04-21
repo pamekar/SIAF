@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    'shared_hosting' => env('SHARED_HOSTING', false),
+    'isDemo' => env('APP_DEMO', true),
 
     /*
     |--------------------------------------------------------------------------
