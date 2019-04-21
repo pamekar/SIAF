@@ -1,0 +1,5 @@
+/*
+ *  Document   : base_pages_ecom_dashboard.js
+ *  Author     : pixelcave
+ */
+var BasePagesEcomDashboard=function(){var o=function(){var o=jQuery(".js-chartjs-overview")[0].getContext("2d"),e={scaleFontFamily:"'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",scaleFontColor:"#999",scaleFontStyle:"600",tooltipTitleFontFamily:"'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif",tooltipCornerRadius:3,maintainAspectRatio:!1,responsive:!0},t={labels:["MON","TUE","WED","THU","FRI","SAT","SUN"],datasets:[{label:"Last Week",fillColor:"rgba(220,220,220,.3)",strokeColor:"rgba(220,220,220,1)",pointColor:"rgba(220,220,220,1)",pointStrokeColor:"#fff",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(220,220,220,1)",data:[390,290,410,290,450,180,360]},{label:"This Week",fillColor:"rgba(171, 227, 125, .3)",strokeColor:"rgba(171, 227, 125, 1)",pointColor:"rgba(171, 227, 125, 1)",pointStrokeColor:"#fff",pointHighlightFill:"#fff",pointHighlightStroke:"rgba(171, 227, 125, 1)",data:[180,360,236,320,210,295,260]}]};new Chart(o).Line(t,e)};return{init:function(){o()}}}();jQuery(function(){BasePagesEcomDashboard.init()});
