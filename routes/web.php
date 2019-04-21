@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::group(['namespace' => 'Home','middleware'=>['isDemo']], function () {
+Route::group(['namespace' => 'Home', 'middleware' => ['isDemo']], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/donate', 'DonateController@index')->name('donate');
