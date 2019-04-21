@@ -22,14 +22,29 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::group(['namespace' => 'Home', 'middleware' => ['isDemo']], function () {
-    Route::get('/', 'HomeController@index');
-    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/donate', 'DonateController@index')->name('donate');
-});
+if (!config('app.isDemo')) {
+    Route::group(['namespace' => 'Home'],
+        function () {
+            Route::get('/', 'HomeController@index');
+            Route::get('/home', 'HomeController@index')->name('home');
+            Route::get('/donate', 'DonateController@index')->name('donate');
+        });
+} else {
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('dashboard', function () {
-        return view('dashboard');
+    Route::get('/', function () {
+        return redirect('user');
     });
+    Route::get('/home', function () {
+        return redirect('user');
+    })->name('home');
+    Route::get('/donate', function () {
+        return redirect('user/donate');
+    })->name('donate');
+
+}
+
+Route::group(['middleware' => 'auth', 'as' => 'user.'], function () {
+    Route::get('user', function () {
+        return view('dashboard');
+    })->name('user');
 });
