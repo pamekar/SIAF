@@ -22,9 +22,14 @@ Route::group(['prefix' => 'admin'], function () {
 
 Auth::routes();
 
-Route::group(['namespace'=>'Home'],function (){
+Route::group(['namespace' => 'Home'], function () {
     Route::get('/', 'HomeController@index');
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/donate', 'DonateController@index')->name('home');
+    Route::get('/donate', 'DonateController@index')->name('donate');
+});
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', function () {
+        return view('dashboard');
+    });
 });
