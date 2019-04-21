@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'shared_hosting' => env('SHARED_HOSTING', false),
 
     /*
     |--------------------------------------------------------------------------
