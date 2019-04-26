@@ -43,8 +43,7 @@ if (!config('app.isDemo')) {
 
 }
 
-Route::group(['middleware' => 'auth', 'as' => 'user.'], function () {
-    Route::get('user', function () {
-        return view('dashboard');
-    })->name('user');
-});
+
+Route::get('user', function () {
+    return view('dashboard');
+})->name('user')->middleware('auth');

@@ -21,5 +21,23 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17"
+    },
+    "dependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^12.1.0",
+        "@ckeditor/ckeditor5-build-inline": "^12.1.0",
+        "@ckeditor/ckeditor5-vue": "^1.0.0-beta.1",
+        "nprogress": "^0.2.0",
+        "sweetalert": "^2.1.2",
+        "v-uploader": "^1.8.0",
+        "v-viewer": "^1.4.0",
+        "vue-headful": "^2.0.1",
+        "vue-input-tag": "^2.0.5",
+        "vue-multiselect": "^2.1.4",
+        "vue-numeric": "^2.3.0",
+        "vue-paginate": "^3.6.0",
+        "vue-router": "^3.0.6",
+        "vue2-timepicker": "^0.1.4",
+        "vuejs-paginate": "^2.1.0",
+        "vuex": "^3.1.0"
     }
 }
