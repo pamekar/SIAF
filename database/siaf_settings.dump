@@ -1,0 +1,58 @@
+-- MySQL dump 10.16  Distrib 10.1.22-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: 127.0.0.1    Database: siaf
+-- ------------------------------------------------------
+-- Server version	10.1.22-MariaDB-
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `settings`
+--
+
+DROP TABLE IF EXISTS `settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `settings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `key` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value` text COLLATE utf8mb4_unicode_ci,
+  `details` text COLLATE utf8mb4_unicode_ci,
+  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order` int(11) NOT NULL DEFAULT '1',
+  `group` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `settings_key_unique` (`key`)
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `settings`
+--
+
+LOCK TABLES `settings` WRITE;
+/*!40000 ALTER TABLE `settings` DISABLE KEYS */;
+INSERT INTO `settings` VALUES (1,'site.title','Site Title','SIAF - Social Intervention Advocacy Foundation','','text',1,'Site'),(2,'site.description','Site Description','Site Description','','text',2,'Site'),(3,'site.logo','Site Logo','settings/April2019/kk5nA6H7qBtrNIHKXv7j.png','','image',3,'Site'),(4,'site.google_analytics_tracking_id','Google Analytics Tracking ID',NULL,'','text',4,'Site'),(5,'admin.bg_image','Admin Background Image','','','image',5,'Admin'),(6,'admin.title','Admin Title','SIAF Admin','','text',1,'Admin'),(7,'admin.description','Admin Description','Welcome to Voyager. The Missing Admin for Laravel','','text',2,'Admin'),(8,'admin.loader','Admin Loader','','','image',3,'Admin'),(9,'admin.icon_image','Admin Icon Image','settings/April2019/NoKtCMNo1yWfz7uin6pQ.png','','image',4,'Admin'),(10,'admin.google_analytics_client_id','Google Analytics Client ID (used for admin dashboard)',NULL,'','text',1,'Admin'),(11,'homepage.services_1_title','First Services Title','First Services Title','','text',6,'Homepage'),(12,'homepage.services_1_content','First Services Content','First Services Content','','text_area',6,'Homepage'),(13,'homepage.services_2_title','Second Services Title','Second Services Title','','text',6,'Homepage'),(14,'homepage.services_2_content','Second Services Content','Second Services Content','','text_area',6,'Homepage'),(15,'homepage.services_3_title','Third Services Title','Third Services Title','','text',6,'Homepage'),(16,'homepage.services_3_content','Third Services Content','Third Services Content','','text_area',6,'Homepage'),(17,'homepage.services_4_title','Fourth Services Title','Fourth Services Title','','text',6,'Homepage'),(18,'homepage.services_4_content','Fourth Services Content','Fourth Services Content','','text_area',6,'Homepage'),(19,'site.about_us','About us','About us','','text_area',6,'Site'),(20,'site.our_mission','Our Mission','Our Mission','','text_area',6,'Site'),(21,'site.our_vision','Our Vision','Our Vision','','text_area',6,'Site'),(22,'site.motto','Motto','Motto','','text_area',6,'Site'),(23,'homepage.counter_1_title','First Counter Title','First Counter Title','','text',6,'Homepage'),(24,'homepage.counter_1_content','First Counter Content','First Counter Content','','text_area',6,'Homepage'),(25,'homepage.counter_2_title','Second Counter Title','Second Counter Title','','text',6,'Homepage'),(26,'homepage.counter_2_content','Second Counter Content','Second Counter Content','','text_area',6,'Homepage'),(27,'homepage.counter_3_title','Third Counter Title','Third Counter Title','','text',6,'Homepage'),(28,'homepage.counter_3_content','Third Counter Content','Third Counter Content','','text_area',6,'Homepage'),(29,'homepage.counter_4_title','Fourth Counter Title','Fourth Counter Title','','text',6,'Homepage'),(30,'homepage.counter_4_content','Fourth Counter Content','Fourth Counter Content','','text_area',6,'Homepage'),(31,'homepage.footer_text','Footer Text','Footer Text','','text_area',6,'Homepage'),(32,'site.contact_email','Contact Email','Contact Email',NULL,'text',7,'Site'),(33,'site.phone_no','Phone No','Phone No',NULL,'text',8,'Site'),(34,'site.contact_address','Contact Address','Contact Address',NULL,'text_area',11,'Site'),(41,'homepage.slide_1_title','First Slide Title','First Slide Title','','text',6,'Homepage'),(42,'homepage.slide_1_content','First Slide Content','First Slide Content','','text',6,'Homepage'),(43,'homepage.slide_2_title','Second Slide Title','Second Slide Title','','text',6,'Homepage'),(44,'homepage.slide_2_content','Second Slide Content','Second Slide Content','','text',6,'Homepage'),(45,'homepage.slide_3_title','Third Slide Title','Third Slide Title','','text',6,'Homepage'),(46,'homepage.slide_3_content','Third Slide Content','Third Slide Content','','text',6,'Homepage'),(48,'homepage.team_description','Team Description','Team Description',NULL,'text_area',10,'Homepage'),(49,'site.twitter','Twitter',NULL,NULL,'text',12,'Site'),(50,'site.facebook','Facebook',NULL,NULL,'text',13,'Site'),(51,'site.title_abbr','Site Title abbr','SIAF',NULL,'text',9,'Site');
+/*!40000 ALTER TABLE `settings` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-04-29 22:37:56
