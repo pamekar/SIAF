@@ -1,0 +1,7 @@
+type Query {
+    me: User! @auth
+    products: [Product!]! @all
+}
+
+#import schemas/*.graphql
+
