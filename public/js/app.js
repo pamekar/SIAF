@@ -4147,12 +4147,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      dashboard: {}
+    };
   },
-  created: function created() {},
-  methods: {},
+  created: function created() {
+    this.getCounts();
+  },
+  methods: {
+    getCount: function getCount(count) {
+      var suffix = "";
+
+      switch (true) {
+        case count > 10000 && count < 1000000:
+          count = Math.floor(count / 1000);
+          suffix = "K";
+          break;
+
+        case count >= 1000000:
+          count = Math.floor(count / 1000000);
+          suffix = "M";
+          break;
+      }
+
+      return Math.ceil(count) + suffix;
+    },
+    getCounts: function getCounts() {
+      var _this = this;
+
+      axios.get("/api").then(function (_ref) {
+        var data = _ref.data;
+        _this.dashboard = data;
+      });
+    }
+  },
   mounted: function mounted() {},
-  components: {}
+  components: {},
+  computed: {
+    contributions: function contributions() {
+      return getCount(this.dashboard.contributions);
+    },
+    expenses: function expenses() {
+      return getCount(this.dashboard.expenses);
+    },
+    resolved: function resolved() {
+      return getCount(this.dashboard.resolved);
+    },
+    pending: function pending() {
+      return getCount(this.dashboard.pending);
+    }
+  }
 });
 
 /***/ }),
@@ -27602,14 +27646,122 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "content content-narrow" }, [
-      _vm._m(1),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "block block-rounded block-link-pop border-left border-primary border-4x",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [
+              _c("div", { staticClass: "block-content block-content-full" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-size-sm font-w600 text-uppercase text-muted"
+                  },
+                  [_vm._v("Resolved")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
+                  _vm._v(_vm._s(_vm.resolved))
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "block block-rounded block-link-pop border-left border-primary border-4x",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [
+              _c("div", { staticClass: "block-content block-content-full" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-size-sm font-w600 text-uppercase text-muted"
+                  },
+                  [_vm._v("Pending")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
+                  _vm._v(_vm._s(_vm.pending))
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "block block-rounded block-link-pop border-left border-primary border-4x",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [
+              _c("div", { staticClass: "block-content block-content-full" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-size-sm font-w600 text-uppercase text-muted"
+                  },
+                  [_vm._v("Contribution")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
+                  _vm._v(_vm._s(_vm.contributions))
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
+          _c(
+            "a",
+            {
+              staticClass:
+                "block block-rounded block-link-pop border-left border-primary border-4x",
+              attrs: { href: "javascript:void(0)" }
+            },
+            [
+              _c("div", { staticClass: "block-content block-content-full" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "font-size-sm font-w600 text-uppercase text-muted"
+                  },
+                  [_vm._v("Expenses")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
+                  _vm._v(_vm._s(_vm.expenses))
+                ])
+              ])
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _vm._m(2),
+      _vm._m(1),
       _vm._v(" "),
       _c("div", { staticClass: "row row-deck" }, [
         _c("div", { staticClass: "col-lg-6" }, [
           _c("div", { staticClass: "block block-mode-loading-oneui" }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c("div", { staticClass: "block-content block-content-full" }, [
               _c(
@@ -27619,13 +27771,13 @@ var render = function() {
                     "table table-striped table-hover table-borderless table-vcenter font-size-sm mb-0"
                 },
                 [
-                  _vm._m(4),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("tbody", [
-                    _vm._m(5),
+                    _vm._m(4),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(6),
+                      _vm._m(5),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -27647,13 +27799,13 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(7),
+                      _vm._m(6),
                       _vm._v(" "),
-                      _vm._m(8)
+                      _vm._m(7)
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(9),
+                      _vm._m(8),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -27675,13 +27827,13 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(10),
+                      _vm._m(9),
                       _vm._v(" "),
-                      _vm._m(11)
+                      _vm._m(10)
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(12),
+                      _vm._m(11),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -27703,13 +27855,13 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(13),
+                      _vm._m(12),
                       _vm._v(" "),
-                      _vm._m(14)
+                      _vm._m(13)
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(15),
+                      _vm._m(14),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -27731,13 +27883,13 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(16),
+                      _vm._m(15),
                       _vm._v(" "),
-                      _vm._m(17)
+                      _vm._m(16)
                     ]),
                     _vm._v(" "),
                     _c("tr", [
-                      _vm._m(18),
+                      _vm._m(17),
                       _vm._v(" "),
                       _c(
                         "td",
@@ -27759,12 +27911,12 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(19),
+                      _vm._m(18),
                       _vm._v(" "),
-                      _vm._m(20)
+                      _vm._m(19)
                     ]),
                     _vm._v(" "),
-                    _vm._m(21)
+                    _vm._m(20)
                   ])
                 ]
               )
@@ -27772,7 +27924,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(22)
+        _vm._m(21)
       ])
     ])
   ])
@@ -27835,120 +27987,6 @@ var staticRenderFns = [
                   )
                 ]
               )
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
-        _c(
-          "a",
-          {
-            staticClass:
-              "block block-rounded block-link-pop border-left border-primary border-4x",
-            attrs: { href: "javascript:void(0)" }
-          },
-          [
-            _c("div", { staticClass: "block-content block-content-full" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-size-sm font-w600 text-uppercase text-muted"
-                },
-                [_vm._v("Resolved")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
-                _vm._v("120,580")
-              ])
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
-        _c(
-          "a",
-          {
-            staticClass:
-              "block block-rounded block-link-pop border-left border-primary border-4x",
-            attrs: { href: "javascript:void(0)" }
-          },
-          [
-            _c("div", { staticClass: "block-content block-content-full" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-size-sm font-w600 text-uppercase text-muted"
-                },
-                [_vm._v("Pending")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
-                _vm._v("150")
-              ])
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
-        _c(
-          "a",
-          {
-            staticClass:
-              "block block-rounded block-link-pop border-left border-primary border-4x",
-            attrs: { href: "javascript:void(0)" }
-          },
-          [
-            _c("div", { staticClass: "block-content block-content-full" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-size-sm font-w600 text-uppercase text-muted"
-                },
-                [_vm._v("Contribution")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
-                _vm._v("$3,200")
-              ])
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6 col-md-3 col-lg-6 col-xl-3" }, [
-        _c(
-          "a",
-          {
-            staticClass:
-              "block block-rounded block-link-pop border-left border-primary border-4x",
-            attrs: { href: "javascript:void(0)" }
-          },
-          [
-            _c("div", { staticClass: "block-content block-content-full" }, [
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "font-size-sm font-w600 text-uppercase text-muted"
-                },
-                [_vm._v("Expenses")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "font-size-h2 font-w400 text-dark" }, [
-                _vm._v("$21")
-              ])
             ])
           ]
         )
