@@ -3,7 +3,6 @@
 /app/Http/Controllers/Home
 /public/assets
 /public/hot
-/public/storage
 /resources/views/home
 /resources/views/layouts/home
 /storage/*.keys
