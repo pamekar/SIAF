@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "league/flysystem-aws-s3-v3": "~1.0",
         "mll-lab/laravel-graphql-playground": "^1.0",
         "nuwave/lighthouse": "^3.4",
         "predis/predis": "^1.1",
