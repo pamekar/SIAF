@@ -6,7 +6,7 @@
                     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center mt-5 mb-2 text-center text-sm-left">
                         <div class="flex-sm-fill">
                             <h1 class="font-w600 text-white mb-0 invisible" data-toggle="appear">Dashboard</h1>
-                            <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">Welcome Administrator</h2>
+                            <h2 class="h4 font-w400 text-white-75 mb-0 invisible" data-toggle="appear" data-timeout="250">Welcome {{user.name}}</h2>
                         </div>
                         <div class="flex-sm-00-auto mt-3 mt-sm-0 ml-sm-3">
                     <span class="d-inline-block invisible" data-toggle="appear" data-timeout="350">
@@ -25,7 +25,7 @@
                     <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                         <div class="block-content block-content-full">
                             <div class="font-size-sm font-w600 text-uppercase text-muted">Resolved</div>
-                            <div class="font-size-h2 font-w400 text-dark">{{resolved}}</div>
+                            <div class="font-size-h2 font-w400 text-dark">{{user.resolved}}</div>
                         </div>
                     </a>
                 </div>
@@ -33,7 +33,7 @@
                     <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                         <div class="block-content block-content-full">
                             <div class="font-size-sm font-w600 text-uppercase text-muted">Pending</div>
-                            <div class="font-size-h2 font-w400 text-dark">{{pending}}</div>
+                            <div class="font-size-h2 font-w400 text-dark">{{user.pending}}</div>
                         </div>
                     </a>
                 </div>
@@ -41,7 +41,7 @@
                     <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                         <div class="block-content block-content-full">
                             <div class="font-size-sm font-w600 text-uppercase text-muted">Contribution</div>
-                            <div class="font-size-h2 font-w400 text-dark">{{contributions}}</div>
+                            <div class="font-size-h2 font-w400 text-dark">{{user.contributions}}</div>
                         </div>
                     </a>
                 </div>
@@ -49,11 +49,12 @@
                     <a class="block block-rounded block-link-pop border-left border-primary border-4x" href="javascript:void(0)">
                         <div class="block-content block-content-full">
                             <div class="font-size-sm font-w600 text-uppercase text-muted">Expenses</div>
-                            <div class="font-size-h2 font-w400 text-dark">{{expenses}}</div>
+                            <div class="font-size-h2 font-w400 text-dark">{{user.expenses}}</div>
                         </div>
                     </a>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-lg-6">
                     <div class="block block-rounded block-mode-loading-oneui">
@@ -507,17 +508,28 @@
 </template>
 
 <script>
+    import {queries} from '../queries'
+
     export default {
         data() {
             return {
+                user:{
+                    name:"",
+                    contributions:0,
+                    expenses:0,
+                    pending:0,
+                    resolved:0,
+                },
                 dashboard: {}
             };
         },
-        
-        created() {
-            this.getCounts();
+        apollo: {
+            user: queries.dashboard
         },
-        
+        created() {
+            //this.getCounts();
+        },
+
         methods:    {
             getCount(count) {
 
@@ -547,19 +559,19 @@
             
         },
         components: {},
-        computed:    {
+        computed:   {
             contributions: function () {
-                return getCount(this.dashboard.contributions);
+                return this.getCount(this.dashboard.contributions);
             },
             expenses:      function () {
-                return getCount(this.dashboard.expenses);
+                return this.getCount(this.dashboard.expenses);
             },
             resolved:      function () {
-                return getCount(this.dashboard.resolved);
+                return this.getCount(this.dashboard.resolved);
             },
             pending:       function () {
-                return getCount(this.dashboard.pending);
+                return this.getCount(this.dashboard.pending);
             }
-        }
+        },
     }
 </script>

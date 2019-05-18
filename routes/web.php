@@ -15,6 +15,29 @@ use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Redis;
+
+Route::get('/redisflush', function () {
+   Redis::flushall();
+});
+Route::get('/redistest', function () {
+    // check if redis has posts.all key exits
+    // if posts found then it will return all post without touching the database
+    if ($posts = Redis::get('posts.all')) {
+        echo "<br> from redis".json_encode($posts)."<br> from redis";
+        return json_encode($posts);
+    }
+
+    // get all post
+    $posts = \App\User::all();
+
+    // store data into redis for next 24 hours
+    Redis::setex('posts.all', 60 * 60 * 24, $posts);
+
+    // return all posts
+    echo "<br>not from redis".json_encode($posts)."<br> not from redis";
+    return $posts;
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -44,7 +67,6 @@ if (!config('app.isDemo')) {
 
 }
 
-
-Route::get('user', function () {
+Route::get('/user/{all?}', function () {
     return view('dashboard');
-})->name('user')->middleware('auth');
+})->where(['all' => '.*'])->name('user')->middleware('auth');
