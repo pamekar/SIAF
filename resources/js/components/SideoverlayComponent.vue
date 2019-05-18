@@ -2,7 +2,7 @@
     <aside id="side-overlay" class="font-size-sm">
         <div class="content-header border-bottom">
             <a class="img-link mr-1" href="javascript:void(0)">
-                <img class="img-avatar img-avatar32" :src="public_+'/jpg/avatar10.jpg'" alt="">
+                <img class="img-avatar img-avatar32" :src="user.avatar" alt="">
             </a>
             <div class="ml-2">
                 <a class="link-fx text-dark font-w600" href="javascript:void(0)">Adam McCoy</a>
@@ -411,11 +411,25 @@
 </template>
 
 <script>
+    import {queries} from '../queries'
+
     export default {
-        props: {
+        data() {
+            return{
+                user:{
+                    name:"",
+                    avatar:""
+                }
+            }
+        },
+        props:  {
             breadcrumbs: Array,
             title:       String,
             button:      Object
         },
+        apollo: {
+            user: queries.user,
+        },
+
     }
 </script>

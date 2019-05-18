@@ -35,15 +35,15 @@
                 <div class="dropdown d-inline-block ml-2">
                     <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded" :src="public_+'/jpg/avatar10.jpg'" alt="Header Avatar"
+                        <img class="rounded" :src="user.avatar" alt="Header Avatar"
                              style="width: 18px;">
-                        <span class="d-none d-sm-inline-block ml-1">Adam</span>
+                        <span class="d-none d-sm-inline-block ml-1">{{user.name}}</span>
                         <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right p-0 border-0 font-size-sm"
                          aria-labelledby="page-header-user-dropdown">
                         <div class="p-3 text-center bg-primary">
-                            <img class="img-avatar img-avatar48 img-avatar-thumb" :src="public_+'/jpg/avatar10.jpg'"
+                            <img class="img-avatar img-avatar48 img-avatar-thumb" :src="user.avatar"
                                  alt="">
                         </div>
                         <div class="p-2">
@@ -203,7 +203,20 @@
     </header>
 </template>
 <script>
-    export default{
+    import {queries} from '../queries'
 
+    export default {
+        data() {
+            return{
+                user:{
+                    name:"",
+                    avatar:""
+                }
+            }
+        },
+        apollo: {
+            // Simple query that will update the 'hello' vue property
+            user: queries.user,
+        },
     }
 </script>
