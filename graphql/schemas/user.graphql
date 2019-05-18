@@ -11,7 +11,8 @@ type User {
     facebook: String
     twitter: String
     avatar: String
-    complaint: Complaint @hasOne
-    contribution: Contribution @hasOne
-    expense: Expense @hasOne
+    contributions: String
+    expenses: String
+    pending: String
+    resolved: String
 }

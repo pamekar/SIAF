@@ -1,7 +1,5 @@
 type Query {
-    me: User! @auth
-    products: [Product!]! @all
+    user: User! @auth
 }
 
-#import schemas/*.graphql
-
+#import schemas/user.graphql

@@ -9,6 +9,9 @@ import store from './store/index.js';
 import vUploader from 'v-uploader';
 import 'viewerjs/dist/viewer.css';
 import Viewer from 'v-viewer';
+import ApolloClient from "apollo-boost"
+import VueApollo from "vue-apollo"
+import {InMemoryCache} from 'apollo-cache-inmemory'
 
 Vue.use(Viewer);
 
@@ -41,9 +44,22 @@ Vue.component('vue-headful', VueHeadful);
 // drg >> set global variables
 Vue.prototype.public_ = window.public_;
 
+// Cache implementation
+const cache = new InMemoryCache();
+
+
+const apolloProvider = new VueApollo({
+    defaultClient: new ApolloClient({
+        uri: "/gql",
+    })
+});
+
+Vue.use(VueApollo);
+
 let app = new Vue({
     el:     '#app',
     render: h => h(App),
     router,
-    store:  store
+    store:  store,
+    apolloProvider
 });
