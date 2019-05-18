@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'route_name' => 'graphql',
+    'route_name' => 'gql',
 
     /*
     |--------------------------------------------------------------------------
@@ -43,7 +43,7 @@ return [
 
     'route' => [
         'prefix' => '',
-        // 'middleware' => ['loghttp']
+        'middleware' => ['web', 'auth'],
     ],
 
     /*
@@ -102,7 +102,7 @@ return [
     /*
     |--------------------------------------------------------------------------
     | Security
-    |--------------------------------------------------------------------------
+    |-------------------------------------------------------------- ------------
     |
     | Control how Lighthouse handles security related query validation.
     | This configures the options from http://webonyx.github.io/graphql-php/security/
