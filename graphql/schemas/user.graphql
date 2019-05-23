@@ -1,16 +1,17 @@
 type User {
     id: ID!
+    is_admin: ID
     name: String!
     email: String!
     first_name: String
     last_name: String
-    email: String
     phone_no: String
     linkedin: String
     instagram: String
     facebook: String
     twitter: String
     avatar: String
+    about: String
     contributions: String
     expenses: String
     pending: String
