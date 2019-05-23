@@ -26,6 +26,15 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
             'name',
             'email',
             'password',
+            'first_name',
+            'last_name',
+            'phone_no',
+            'linkedin',
+            'instagram',
+            'facebook',
+            'twitter',
+            'avatar',
+            'about'
         ];
 
     /**
@@ -60,7 +69,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
             return $contributions;
         }
 
-        $contributions = Contribution::sum('amount')/100;
+        $contributions = Contribution::sum('amount') / 100;
 
         Redis::setex('dashboard.contributions', 60 * 60 * 24, $contributions);
 
@@ -106,6 +115,11 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         Redis::setex('dashboard.resolved', 60 * 60 * 24, $resolved);
 
         return $resolved;
+    }
+
+    public function getIsAdminAttribute()
+    {
+        return !$this->hasRole('user');
     }
 
     public function getJWTIdentifier()
