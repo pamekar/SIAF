@@ -1,5 +1,19 @@
 type Query {
     user: User! @auth
 }
+type Mutation{
+    updateUser(
+    id: ID!,
+    first_name: String,
+    last_name: String,
+    phone_no: String,
+    linkedin: String,
+    instagram: String,
+    facebook: String,
+    twitter: String,
+    avatar: String,
+    about: String,
+    ): User @update
+}
 
 #import schemas/user.graphql

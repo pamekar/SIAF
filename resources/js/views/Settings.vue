@@ -33,57 +33,59 @@
                 <div class="block-content">
                     <div class="row">
                         <div class="col-md-8 col-sm-6">
-                            <form class="mb-5 row" action="#" method="POST" onsubmit="return false;">
-                                <div class="form-group col-md-6">
-                                    <label for="settings-first-name">First Name</label>
-                                    <input type="text" class="form-control" v-model="user.first_name" id="settings-first-name" name="first_name" placeholder="Your First Name..">
-                                </div>
+                            <ApolloMutation :mutation="$mutations.updateUser" :variables="user">
+                                <form class="mb-5 row" action="/user/settings" method="POST" slot-scope="{mutate, loading}" :disabled="loading" @submit.prevent="mutate()">
+                                    <div class="form-group col-md-6">
+                                        <label for="settings-first-name">First Name</label>
+                                        <input type="text" class="form-control" v-model="user.first_name" id="settings-first-name" name="first_name" placeholder="Your First Name..">
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="settings-last-name">Last Name</label>
+                                    <div class="form-group col-md-6">
+                                        <label for="settings-last-name">Last Name</label>
 
-                                    <input type="text" class="form-control" v-model="user.last_name" id="settings-last-name" name="last_name" placeholder="Your Last Name..">
-                                </div>
+                                        <input type="text" class="form-control" v-model="user.last_name" id="settings-last-name" name="last_name" placeholder="Your Last Name..">
+                                    </div>
 
-                                <div class="form-group col-md-12">
-                                    <label for="settings-about">About</label>
+                                    <div class="form-group col-md-12">
+                                        <label for="settings-about">About</label>
 
-                                    <textarea class="form-control" v-model="user.about" id="settings-about" name="about" placeholder="Say something about yourself.."></textarea>
-                                </div>
+                                        <textarea class="form-control" v-model="user.about" id="settings-about" name="about" placeholder="Say something about yourself.."></textarea>
+                                    </div>
 
-                                <div class="form-group col-md-12">
-                                    <label for="settings-phone-no">Phone No</label>
+                                    <div class="form-group col-md-12">
+                                        <label for="settings-phone-no">Phone No</label>
 
-                                    <input type="text" class="form-control" v-model="user.phone_no" id="settings-phone-no" name="phone_no" placeholder="Your Phone No..">
-                                </div>
+                                        <input type="text" class="form-control" v-model="user.phone_no" id="settings-phone-no" name="phone_no" placeholder="Your Phone No..">
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="settings-twitter">Twitter</label>
+                                    <div class="form-group col-md-6">
+                                        <label for="settings-twitter">Twitter</label>
 
-                                    <input type="text" class="form-control" v-model="user.twitter" id="settings-twitter" name="twitter" placeholder="Your Twitter Id..">
-                                </div>
+                                        <input type="text" class="form-control" v-model="user.twitter" id="settings-twitter" name="twitter" placeholder="Your Twitter Id..">
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="settings-facebook">Facebook</label>
+                                    <div class="form-group col-md-6">
+                                        <label for="settings-facebook">Facebook</label>
 
-                                    <input type="text" class="form-control" v-model="user.facebook" id="settings-facebook" name="facebook" placeholder="Your Facebook Id..">
-                                </div>
+                                        <input type="text" class="form-control" v-model="user.facebook" id="settings-facebook" name="facebook" placeholder="Your Facebook Id..">
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="settings-instagram">Instagram</label>
+                                    <div class="form-group col-md-6">
+                                        <label for="settings-instagram">Instagram</label>
 
-                                    <input type="text" class="form-control" v-model="user.instagram" id="settings-instagram" name="instagram" placeholder="Your Instagram Id..">
-                                </div>
+                                        <input type="text" class="form-control" v-model="user.instagram" id="settings-instagram" name="instagram" placeholder="Your Instagram Id..">
+                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="settings-linkedin">Linkedin</label>
+                                    <div class="form-group col-md-6">
+                                        <label for="settings-linkedin">Linkedin</label>
 
-                                    <input type="text" class="form-control" v-model="user.linkedin" id="settings-linkedin" name="linkedin" placeholder="Your Linkedin Id..">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </div>
-                            </form>
+                                        <input type="text" class="form-control" v-model="user.linkedin" id="settings-linkedin" name="linkedin" placeholder="Your Linkedin Id..">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </form>
+                            </ApolloMutation>
                         </div>
                     </div>
                 </div>
@@ -140,6 +142,7 @@
     import {mutations} from '../mutations'
     
     export default {
+
         data() {
             return {
                 user: {
@@ -160,14 +163,17 @@
         apollo:     {
             user: queries.settings
         },
+        beforeCreate() {
+            this.$mutations = mutations;
+        },
         created() {
         },
         methods:    {
-            updateUser() {
-                // We save the user input in case of an error
-                const newTag = this.newTag
+            /*updateUser() {
+                delete this.user.__typename;
+                const user = this.user;
                 // We clear it early to give the UI a snappy feel
-                this.newTag = ''
+                this.user = {};
                 // Call to the graphql mutation
                 this.$apollo.mutate({
                     // Query
@@ -177,23 +183,23 @@
                     // Update the cache with the result
                     // The query will be updated with the optimistic response
                     // and then with the real result of the mutation
-                    update:             (store, {data: {addTag}}) => {
+                    update:             (store, {data: {updateUser}}) => {
                         // Read the data from our cache for this query.
-                        const data = store.readQuery({query: TAGS_QUERY})
+                        const data = store.readQuery({query: mutations.updateUser})
                         // Add our tag from the mutation to the end
-                        data.tags.push(addTag)
+                        data.tags.push([])
                         // Write our data back to the cache.
-                        store.writeQuery({query: TAGS_QUERY, data})
+                        store.writeQuery({query: mutations.updateUser, data})
                     },
                     // Optimistic UI
                     // Will be treated as a 'fake' result as soon as the request is made
                     // so that the UI can react quickly and the user be happy
                     optimisticResponse: {
                         __typename: 'Mutation',
-                        addTag:     {
-                            __typename: 'Tag',
+                        updateUser: {
+                            __typename: 'user',
                             id:         -1,
-                            label:      newTag,
+                            label:      user,
                         },
                     },
                 }).then((data) => {
@@ -203,9 +209,9 @@
                     // Error
                     console.error(error)
                     // We restore the initial user input
-                    this.newTag = newTag
+                    this.user = user
                 })
-            },
+            },*/
         },
         mounted() {
 
