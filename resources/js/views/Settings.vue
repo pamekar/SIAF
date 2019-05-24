@@ -101,31 +101,76 @@
                 </div>
                 <div class="block-content">
                     <form class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" v-if="editEmail">
+                            <ApolloMutation :mutation="$mutations.updateEmail" :variables="{id:user.id,email:user.email}">
+                                <template slot-scope="{ mutate, loading, error }">
+                                    <form action="/user/change/email" @submit.prevent="mutate()" :disabled="loading">
+
+                                        <label for="settings-email">Email</label>
+                                        <div class="input-group">
+
+                                            <input type="email" class="form-control" v-model="user.email" id="settings-email" name="email" placeholder="Your Email..">
+                                            <div class="input-group-append">
+                                                <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Email"><i class="fa fa-check"></i></button>
+                                                <button type="button" class="btn btn-outline-warning" @click="alterEdit('email')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Changed your mind?"><i class="fa fa-tint-slash"></i></button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </template>
+                            </ApolloMutation>
+                        </div>
+                        <div class="form-group col-md-6" v-else>
                             <label for="settings-email">Email</label>
-
-                            <input type="email" class="form-control" v-model="user.email" id="settings-email" name="email" placeholder="Your Email.." disabled>
+                            <div class="input-group">
+                                <input type="email" class="form-control" v-model="user.email" id="settings-email" name="email" placeholder="Your Email.." disabled>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-secondary" @click="alterEdit('email')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change your Email."><i class="fa fa-edit"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6" v-if="editUsername">
+                            <ApolloMutation :mutation="$mutations.updateName" :variables="{id:user.id, name:user.name}">
+                                <template slot-scope="{ mutate, loading, error }">
+                                    <form action="/user/change/email" @submit.prevent="mutate()" :disabled="loading">
+                                        <label for="settings-username">Username</label>
+                                        <div class="input-group">
+
+                                            <input type="text" class="form-control" v-model="user.name" id="settings-username" name="username" placeholder="Your Username..">
+                                            <div class="input-group-append">
+
+                                                <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update username..."><i class="fa fa-check"></i></button>
+                                                <button type="button" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Changed your mind?" @click="alterEdit('username')"><i class="fa fa-tint-slash"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </template>
+                            </ApolloMutation>
+                        </div>
+                        <div class="form-group col-md-6" v-else>
                             <label for="settings-username">Username</label>
-
-                            <input type="text" class="form-control" v-model="user.name" id="settings-username" name="username" placeholder="Your Username..">
+                            <div class="input-group">
+                                <input type="text" class="form-control" v-model="user.name" id="settings-username" name="username" placeholder="Your Username.." disabled>
+                                <div class="input-group-append">
+                                    <button type="button" class="btn btn-outline-secondary" @click="alterEdit('username')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Change your Username."><i class="fa fa-edit"></i></button>
+                                </div>
+                            </div>
                         </div>
-
+                  <form action="/user/password/change" @submit="">
                         <div class="form-group col-md-4">
-                            <label for="settings-password">Password</label>
+                            <label for="settings-password">Current Password</label>
 
-                            <input type="password" class="form-control" id="settings-password" name="password" placeholder="Your Password..">
+                            <input type="password" class="form-control" id="settings-password" name="password" placeholder="Your Password.." v-model="password.current_password">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="settings-password-new">New Password</label>
 
-                            <input type="password" class="form-control" id="settings-password-new" name="password-new" placeholder="Your New Password..">
+                            <input type="password" class="form-control" id="settings-password-new" name="password-new" placeholder="Your New Password.." v-model="password.new_password">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="settings-password-confirmation">Confirm Password</label>
 
-                            <input type="password" class="form-control" id="settings-password-confirmation" name="password-confirmation" placeholder="Your Password Confirmation..">
+                            <input type="password" class="form-control" id="settings-password-confirmation" name="password-confirmation" placeholder="Your Password Confirmation.." v-model="password.new_password_confirmation">
                         </div>
                         <div class="form-group col-md-12">
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -140,12 +185,12 @@
 <script>
     import {queries} from '../queries'
     import {mutations} from '../mutations'
-    
+
     export default {
 
         data() {
             return {
-                user: {
+                user:         {
                     name:       "",
                     first_name: "",
                     last_name:  "",
@@ -158,6 +203,13 @@
                     avatar:     "",
                     about:      ""
                 },
+                editEmail:    false,
+                editUsername: false,
+                password:     {
+                    current_password:         "",
+                    new_password:             "",
+                    new_password_confirmation: ""
+                }
             };
         },
         apollo:     {
@@ -169,49 +221,16 @@
         created() {
         },
         methods:    {
-            /*updateUser() {
-                delete this.user.__typename;
-                const user = this.user;
-                // We clear it early to give the UI a snappy feel
-                this.user = {};
-                // Call to the graphql mutation
-                this.$apollo.mutate({
-                    // Query
-                    mutation:           mutations.updateUser,
-                    // Parameters
-                    variables:          this.user,
-                    // Update the cache with the result
-                    // The query will be updated with the optimistic response
-                    // and then with the real result of the mutation
-                    update:             (store, {data: {updateUser}}) => {
-                        // Read the data from our cache for this query.
-                        const data = store.readQuery({query: mutations.updateUser})
-                        // Add our tag from the mutation to the end
-                        data.tags.push([])
-                        // Write our data back to the cache.
-                        store.writeQuery({query: mutations.updateUser, data})
-                    },
-                    // Optimistic UI
-                    // Will be treated as a 'fake' result as soon as the request is made
-                    // so that the UI can react quickly and the user be happy
-                    optimisticResponse: {
-                        __typename: 'Mutation',
-                        updateUser: {
-                            __typename: 'user',
-                            id:         -1,
-                            label:      user,
-                        },
-                    },
-                }).then((data) => {
-                    // Result
-                    console.log(data)
-                }).catch((error) => {
-                    // Error
-                    console.error(error)
-                    // We restore the initial user input
-                    this.user = user
-                })
-            },*/
+            alterEdit: function (type) {
+                switch (type) {
+                    case 'username':
+                        this.editUsername = !this.editUsername;
+                        break;
+                    case 'email':
+                        this.editEmail = !this.editEmail;
+                        break;
+                }
+            }
         },
         mounted() {
 
