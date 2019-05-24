@@ -8,6 +8,7 @@ import Contribution from './views/Contribution.vue'
 import ContributionHistory from './views/ContributionHistory.vue'
 import ContributionMake from './views/ContributionMake.vue'
 import Members from './views/Members.vue'
+import Settings from './views/Settings.vue'
 
 const Error404 = {
     beforeRouteEnter(to, from, next) {
@@ -63,6 +64,11 @@ const routes = [
         path:      '/user/members',
         name:      'members',
         component: Members
+    },
+    {
+        path:      '/user/settings',
+        name:      'settings',
+        component: Settings
     },
 ];
 
