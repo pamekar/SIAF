@@ -100,21 +100,25 @@
                     </div>
                 </div>
                 <div class="block-content">
-                    <form class="row">
+                    <div class="row">
                         <div class="form-group col-md-6" v-if="editEmail">
                             <ApolloMutation :mutation="$mutations.updateEmail" :variables="{id:user.id,email:user.email}">
-                                <template slot-scope="{ mutate, loading, error }">
+                                <template slot-scope="{ mutate, loading, error, gqlError }">
                                     <form action="/user/change/email" @submit.prevent="mutate()" :disabled="loading">
 
-                                        <label for="settings-email">Email</label>
-                                        <div class="input-group">
+                                        <div class="form-group">
+                                            <label for="settings-email">Email</label>
+                                            <div class="input-group">
 
-                                            <input type="email" class="form-control" v-model="user.email" id="settings-email" name="email" placeholder="Your Email..">
-                                            <div class="input-group-append">
-                                                <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Email"><i class="fa fa-check"></i></button>
-                                                <button type="button" class="btn btn-outline-warning" @click="alterEdit('email')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Changed your mind?"><i class="fa fa-tint-slash"></i></button>
+                                                <input type="email" class="form-control" :class="{'is-invalid':error}" v-model="user.email" id="settings-email" name="email" placeholder="Your Email..">
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update Email"><i class="fa fa-check"></i></button>
+                                                    <button type="button" class="btn btn-outline-warning" @click="alterEdit('email')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Changed your mind?"><i class="fa fa-tint-slash"></i></button>
+                                                </div>
+                                                <div v-if="error" class="invalid-feedback">
+                                                    <div v-for="error in gqlError.extensions.validation.email">{{error}}</div>
+                                                </div>
                                             </div>
-
                                         </div>
                                     </form>
                                 </template>
@@ -131,16 +135,19 @@
                         </div>
                         <div class="form-group col-md-6" v-if="editUsername">
                             <ApolloMutation :mutation="$mutations.updateName" :variables="{id:user.id, name:user.name}">
-                                <template slot-scope="{ mutate, loading, error }">
+                                <template slot-scope="{ mutate, loading, error, gqlError }">
                                     <form action="/user/change/email" @submit.prevent="mutate()" :disabled="loading">
                                         <label for="settings-username">Username</label>
                                         <div class="input-group">
 
-                                            <input type="text" class="form-control" v-model="user.name" id="settings-username" name="username" placeholder="Your Username..">
+                                            <input type="text" class="form-control" :class="{'is-invalid':error}" v-model="user.name" id="settings-username" name="username" placeholder="Your Username..">
                                             <div class="input-group-append">
-
-                                                <button type="button" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update username..."><i class="fa fa-check"></i></button>
+                                                <button type="submit" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update username..."><i class="fa fa-check"></i></button>
                                                 <button type="button" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Changed your mind?" @click="alterEdit('username')"><i class="fa fa-tint-slash"></i></button>
+                                            </div>
+
+                                            <div v-if="error" class="invalid-feedback">
+                                                <div v-for="error in gqlError.extensions.validation.name">{{error}}</div>
                                             </div>
                                         </div>
                                     </form>
@@ -206,8 +213,8 @@
                 editEmail:    false,
                 editUsername: false,
                 password:     {
-                    current_password:         "",
-                    new_password:             "",
+                    current_password:          "",
+                    new_password:              "",
                     new_password_confirmation: ""
                 }
             };
@@ -221,7 +228,7 @@
         created() {
         },
         methods:    {
-            alterEdit: function (type) {
+            alterEdit:      function (type) {
                 switch (type) {
                     case 'username':
                         this.editUsername = !this.editUsername;
