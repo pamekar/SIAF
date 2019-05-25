@@ -18,13 +18,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redis;
 
 Route::get('/redisflush', function () {
-   Redis::flushall();
+    Redis::flushall();
 });
 Route::get('/redistest', function () {
     // check if redis has posts.all key exits
     // if posts found then it will return all post without touching the database
     if ($posts = Redis::get('posts.all')) {
-        echo "<br> from redis".json_encode($posts)."<br> from redis";
+        echo "<br> from redis" . json_encode($posts) . "<br> from redis";
         return json_encode($posts);
     }
 
@@ -35,7 +35,7 @@ Route::get('/redistest', function () {
     Redis::setex('posts.all', 60 * 60 * 24, $posts);
 
     // return all posts
-    echo "<br>not from redis".json_encode($posts)."<br> not from redis";
+    echo "<br>not from redis" . json_encode($posts) . "<br> not from redis";
     return $posts;
 });
 
@@ -67,6 +67,9 @@ if (!config('app.isDemo')) {
 
 }
 
+Route::get('/users/{soon}', function () {
+    return view('comingSoon');
+})->where(['soon' => '.*'])->name('coming_soon');
 Route::get('/user/{all?}', function () {
     return view('dashboard');
 })->where(['all' => '.*'])->name('user')->middleware('auth');
