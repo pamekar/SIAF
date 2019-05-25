@@ -163,26 +163,33 @@
                                 </div>
                             </div>
                         </div>
-                  <form action="/user/password/change" @submit="">
-                        <div class="form-group col-md-4">
-                            <label for="settings-password">Current Password</label>
+                    </div>
+                    <ApolloMutation :mutation="$mutations.updatePassword" :variables="{current_password:password.current_password, new_password:password.new_password, new_password_confirmation:password.new_password_confirmation}">
+                        <template slot-scope="{ mutate, loading, error }">
+                            <form class="row" action="/user/change/password" @submit.prevent="mutate()" :disabled="loading">
+                                <div class="form-group col-md-4">
+                                    <label for="settings-password">Current Password</label>
 
-                            <input type="password" class="form-control" id="settings-password" name="password" placeholder="Your Password.." v-model="password.current_password">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="settings-password-new">New Password</label>
+                                    <input type="password" class="form-control" id="settings-password" name="password" placeholder="Your Password.." v-model="password.current_password">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="settings-password-new">New Password</label>
 
-                            <input type="password" class="form-control" id="settings-password-new" name="password-new" placeholder="Your New Password.." v-model="password.new_password">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="settings-password-confirmation">Confirm Password</label>
+                                    <input type="password" class="form-control" id="settings-password-new" name="password-new" placeholder="Your New Password.." v-model="password.new_password">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="settings-password-confirmation">Confirm Password</label>
 
-                            <input type="password" class="form-control" id="settings-password-confirmation" name="password-confirmation" placeholder="Your Password Confirmation.." v-model="password.new_password_confirmation">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
+                                    <input type="password" class="form-control" id="settings-password-confirmation" name="password-confirmation" placeholder="Your Password Confirmation.." v-model="password.new_password_confirmation">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+
+                                </div>
+
+                            </form>
+                        </template>
+                    </ApolloMutation>
                 </div>
             </div>
         </div>

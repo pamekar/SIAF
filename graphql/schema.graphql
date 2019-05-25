@@ -3,17 +3,30 @@ type Query {
 }
 type Mutation{
     updateUser(
-    id: ID!,
-    first_name: String,
-    last_name: String,
-    phone_no: String,
-    linkedin: String,
-    instagram: String,
-    facebook: String,
-    twitter: String,
-    avatar: String,
-    about: String,
+        id: ID!,
+        first_name: String,
+        last_name: String,
+        phone_no: String,
+        linkedin: String,
+        instagram: String,
+        facebook: String,
+        twitter: String,
+        avatar: String,
+        about: String,
     ): User @update
+    updateEmail(
+        id: ID!,
+        email: String @rules(apply: ["string", "unique:users,email"], messages: { unique: "There's already a user registered with that email"})
+    ): User @update
+    updateName(
+        id: ID!,
+        name: String @rules(apply: ["string", "unique:users,name"], messages: { unique: "There's already a user registered with that username"})
+    ): User @update
+    updatePassword(
+        current_password: String
+        new_password: String
+        new_password_confirmation: String
+    ): User @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@changePassword")
 }
 
 #import schemas/user.graphql
