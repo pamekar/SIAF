@@ -37,4 +37,42 @@ export const mutations = {
             about
         }
     }`,
+    updateEmail: gql`mutation (
+        $id: ID!
+        $email: String
+    ) {
+        updateEmail(
+            id: $id
+            email: $email
+        ) {
+            id
+            email
+        }
+    }`,
+    updateName: gql`mutation (
+        $id: ID!
+        $name: String
+    ) {
+        updateName(
+            id: $id
+            name: $name
+        ) {
+            id
+            name
+        }
+    }`,
+    updatePassword:gql`mutation (
+        $current_password: String
+        $new_password: String
+        $new_password_confirmation: String
+    ){
+        updatePassword(
+            current_password: $current_password
+            new_password: $new_password
+            new_password_confirmation: $new_password_confirmation
+        ) {
+            first_name
+        }
+    }
+    `
 };
