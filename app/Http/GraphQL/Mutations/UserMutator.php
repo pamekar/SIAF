@@ -48,7 +48,7 @@ class UserMutator
      *
      * @param Request $request
      *
-     * @return array
+     * @return boolean
      */
     public function updatePassword($root, array $args, GraphQLContext $context)
     {
@@ -58,7 +58,7 @@ class UserMutator
         if (Hash::check($args['current_password'], $user->password)) {
             $user->password = Hash::make($args['new_password']);
             $user->save();
-            return ['status' => 'Password change successfully!'];
+        return true;
         } else {
             throw new PasswordException('Incorrect Password',
                 'current_password', 'You entered an incorrect password');
