@@ -9144,6 +9144,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9189,6 +9217,29 @@ __webpack_require__.r(__webpack_exports__);
           this.editEmail = !this.editEmail;
           break;
       }
+    },
+    notifyStatus: function notifyStatus(type, message) {
+      var icon = 'fa fa-check mr-1';
+
+      switch (status) {
+        case 'success':
+          icon = 'fa fa-check mr-1';
+          break;
+
+        case 'danger':
+          icon = 'fa fa-times mr-1';
+          break;
+
+        case 'warning':
+          icon = 'fa fa-exclamation mr-1';
+          break;
+      }
+
+      One.helpers('notify', {
+        type: type,
+        icon: icon,
+        message: message
+      });
     }
   },
   mounted: function mounted() {},
@@ -41650,352 +41701,538 @@ var render = function() {
                     mutation: _vm.$mutations.updateUser,
                     variables: _vm.user
                   },
+                  on: {
+                    done: function($event) {
+                      _vm.notifyStatus(
+                        "success",
+                        "Your details have been updated successfully"
+                      )
+                    },
+                    error: function($event) {
+                      _vm.notifyStatus("danger", "Oops! An error occurred")
+                    }
+                  },
                   scopedSlots: _vm._u([
                     {
                       key: "default",
                       fn: function(ref) {
                         var mutate = ref.mutate
                         var loading = ref.loading
-                        return _c(
-                          "form",
-                          {
-                            staticClass: "mb-5 row",
-                            attrs: {
-                              action: "/user/settings",
-                              method: "POST",
-                              disabled: loading
-                            },
-                            on: {
-                              submit: function($event) {
-                                $event.preventDefault()
-                                mutate()
+                        var error = ref.error
+                        var gqlError = ref.gqlError
+                        return [
+                          _c(
+                            "form",
+                            {
+                              staticClass: "mb-5 row",
+                              attrs: {
+                                action: "/user/settings",
+                                method: "POST"
+                              },
+                              on: {
+                                submit: function($event) {
+                                  $event.preventDefault()
+                                  mutate()
+                                }
                               }
-                            }
-                          },
-                          [
-                            _c("div", { staticClass: "form-group col-md-6" }, [
+                            },
+                            [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-first-name" } },
-                                [_vm._v("First Name")]
+                                "div",
+                                { staticClass: "form-group col-md-6" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-first-name" } },
+                                    [_vm._v("First Name")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.first_name,
+                                        expression: "user.first_name"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-first-name",
+                                      name: "first_name",
+                                      placeholder: "Your First Name.."
+                                    },
+                                    domProps: { value: _vm.user.first_name },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "first_name",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .first_name,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.first_name,
-                                    expression: "user.first_name"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-first-name",
-                                  name: "first_name",
-                                  placeholder: "Your First Name.."
-                                },
-                                domProps: { value: _vm.user.first_name },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "first_name",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-last-name" } },
-                                [_vm._v("Last Name")]
+                                "div",
+                                { staticClass: "form-group col-md-6" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-last-name" } },
+                                    [_vm._v("Last Name")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.last_name,
+                                        expression: "user.last_name"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-last-name",
+                                      name: "last_name",
+                                      placeholder: "Your Last Name.."
+                                    },
+                                    domProps: { value: _vm.user.last_name },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "last_name",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .last_name,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.last_name,
-                                    expression: "user.last_name"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-last-name",
-                                  name: "last_name",
-                                  placeholder: "Your Last Name.."
-                                },
-                                domProps: { value: _vm.user.last_name },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "last_name",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-about" } },
-                                [_vm._v("About")]
+                                "div",
+                                { staticClass: "form-group col-md-12" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-about" } },
+                                    [_vm._v("About")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("textarea", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.about,
+                                        expression: "user.about"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      id: "settings-about",
+                                      name: "about",
+                                      placeholder:
+                                        "Say something about yourself.."
+                                    },
+                                    domProps: { value: _vm.user.about },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "about",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation.about,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("textarea", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.about,
-                                    expression: "user.about"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  id: "settings-about",
-                                  name: "about",
-                                  placeholder: "Say something about yourself.."
-                                },
-                                domProps: { value: _vm.user.about },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "about",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-phone-no" } },
-                                [_vm._v("Phone No")]
+                                "div",
+                                { staticClass: "form-group col-md-12" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-phone-no" } },
+                                    [_vm._v("Phone No")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.phone_no,
+                                        expression: "user.phone_no"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-phone-no",
+                                      name: "phone_no",
+                                      placeholder: "Your Phone No.."
+                                    },
+                                    domProps: { value: _vm.user.phone_no },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "phone_no",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .phone_no,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.phone_no,
-                                    expression: "user.phone_no"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-phone-no",
-                                  name: "phone_no",
-                                  placeholder: "Your Phone No.."
-                                },
-                                domProps: { value: _vm.user.phone_no },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "phone_no",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-twitter" } },
-                                [_vm._v("Twitter")]
+                                "div",
+                                { staticClass: "form-group col-md-6" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-twitter" } },
+                                    [_vm._v("Twitter")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.twitter,
+                                        expression: "user.twitter"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-twitter",
+                                      name: "twitter",
+                                      placeholder: "Your Twitter Id.."
+                                    },
+                                    domProps: { value: _vm.user.twitter },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "twitter",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .twitter,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.twitter,
-                                    expression: "user.twitter"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-twitter",
-                                  name: "twitter",
-                                  placeholder: "Your Twitter Id.."
-                                },
-                                domProps: { value: _vm.user.twitter },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "twitter",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-facebook" } },
-                                [_vm._v("Facebook")]
+                                "div",
+                                { staticClass: "form-group col-md-6" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-facebook" } },
+                                    [_vm._v("Facebook")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.facebook,
+                                        expression: "user.facebook"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-facebook",
+                                      name: "facebook",
+                                      placeholder: "Your Facebook Id.."
+                                    },
+                                    domProps: { value: _vm.user.facebook },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "facebook",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .facebook,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.facebook,
-                                    expression: "user.facebook"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-facebook",
-                                  name: "facebook",
-                                  placeholder: "Your Facebook Id.."
-                                },
-                                domProps: { value: _vm.user.facebook },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "facebook",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-instagram" } },
-                                [_vm._v("Instagram")]
+                                "div",
+                                { staticClass: "form-group col-md-6" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-instagram" } },
+                                    [_vm._v("Instagram")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.instagram,
+                                        expression: "user.instagram"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-instagram",
+                                      name: "instagram",
+                                      placeholder: "Your Instagram Id.."
+                                    },
+                                    domProps: { value: _vm.user.instagram },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "instagram",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .instagram,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.instagram,
-                                    expression: "user.instagram"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-instagram",
-                                  name: "instagram",
-                                  placeholder: "Your Instagram Id.."
-                                },
-                                domProps: { value: _vm.user.instagram },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "instagram",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-6" }, [
                               _c(
-                                "label",
-                                { attrs: { for: "settings-linkedin" } },
-                                [_vm._v("Linkedin")]
+                                "div",
+                                { staticClass: "form-group col-md-6" },
+                                [
+                                  _c(
+                                    "label",
+                                    { attrs: { for: "settings-linkedin" } },
+                                    [_vm._v("Linkedin")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("input", {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.user.linkedin,
+                                        expression: "user.linkedin"
+                                      }
+                                    ],
+                                    staticClass: "form-control",
+                                    class: { "is-invalid": error },
+                                    attrs: {
+                                      type: "text",
+                                      id: "settings-linkedin",
+                                      name: "linkedin",
+                                      placeholder: "Your Linkedin Id.."
+                                    },
+                                    domProps: { value: _vm.user.linkedin },
+                                    on: {
+                                      input: function($event) {
+                                        if ($event.target.composing) {
+                                          return
+                                        }
+                                        _vm.$set(
+                                          _vm.user,
+                                          "linkedin",
+                                          $event.target.value
+                                        )
+                                      }
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  error
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "invalid-feedback" },
+                                        _vm._l(
+                                          gqlError.extensions.validation
+                                            .linkedin,
+                                          function(error) {
+                                            return _c("div", [
+                                              _vm._v(_vm._s(error))
+                                            ])
+                                          }
+                                        )
+                                      )
+                                    : _vm._e()
+                                ]
                               ),
                               _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.user.linkedin,
-                                    expression: "user.linkedin"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  id: "settings-linkedin",
-                                  name: "linkedin",
-                                  placeholder: "Your Linkedin Id.."
-                                },
-                                domProps: { value: _vm.user.linkedin },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.user,
-                                      "linkedin",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "form-group col-md-12" }, [
                               _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-primary",
-                                  attrs: { type: "submit" }
-                                },
-                                [_vm._v("Update")]
+                                "div",
+                                { staticClass: "form-group col-md-12" },
+                                [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-primary",
+                                      attrs: { type: "submit" }
+                                    },
+                                    [_vm._v("Update")]
+                                  )
+                                ]
                               )
-                            ])
-                          ]
-                        )
+                            ]
+                          )
+                        ]
                       }
                     }
                   ])
@@ -42023,7 +42260,21 @@ var render = function() {
                       _c("ApolloMutation", {
                         attrs: {
                           mutation: _vm.$mutations.updateEmail,
-                          variables: { id: _vm.user.id, email: _vm.user.email }
+                          variables: { email: _vm.user.email }
+                        },
+                        on: {
+                          done: function($event) {
+                            _vm.notifyStatus(
+                              "success",
+                              "Your email has been updated successfully"
+                            )
+                          },
+                          error: function($event) {
+                            _vm.notifyStatus(
+                              "danger",
+                              "Oops! An error occurred"
+                            )
+                          }
                         },
                         scopedSlots: _vm._u([
                           {
@@ -42245,7 +42496,21 @@ var render = function() {
                       _c("ApolloMutation", {
                         attrs: {
                           mutation: _vm.$mutations.updateName,
-                          variables: { id: _vm.user.id, name: _vm.user.name }
+                          variables: { name: _vm.user.name }
+                        },
+                        on: {
+                          done: function($event) {
+                            _vm.notifyStatus(
+                              "success",
+                              "Your username has been updated successfully"
+                            )
+                          },
+                          error: function($event) {
+                            _vm.notifyStatus(
+                              "danger",
+                              "Oops! An error occurred"
+                            )
+                          }
                         },
                         scopedSlots: _vm._u([
                           {
@@ -42458,6 +42723,17 @@ var render = function() {
                     _vm.password.new_password_confirmation
                 }
               },
+              on: {
+                done: function($event) {
+                  _vm.notifyStatus(
+                    "success",
+                    "Your password has been updated successfully"
+                  )
+                },
+                error: function($event) {
+                  _vm.notifyStatus("danger", "Oops! An error occurred")
+                }
+              },
               scopedSlots: _vm._u([
                 {
                   key: "default",
@@ -42465,6 +42741,7 @@ var render = function() {
                     var mutate = ref.mutate
                     var loading = ref.loading
                     var error = ref.error
+                    var gqlError = ref.gqlError
                     return [
                       _c(
                         "form",
@@ -42499,6 +42776,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
+                              class: { "is-invalid": error },
                               attrs: {
                                 type: "password",
                                 id: "settings-password",
@@ -42520,7 +42798,21 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            error
+                              ? _c(
+                                  "div",
+                                  { staticClass: "invalid-feedback" },
+                                  _vm._l(
+                                    gqlError.extensions.validation
+                                      .current_password,
+                                    function(error) {
+                                      return _c("div", [_vm._v(_vm._s(error))])
+                                    }
+                                  )
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-4" }, [
@@ -42540,6 +42832,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
+                              class: { "is-invalid": error },
                               attrs: {
                                 type: "password",
                                 id: "settings-password-new",
@@ -42559,7 +42852,20 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            error
+                              ? _c(
+                                  "div",
+                                  { staticClass: "invalid-feedback" },
+                                  _vm._l(
+                                    gqlError.extensions.validation.new_password,
+                                    function(error) {
+                                      return _c("div", [_vm._v(_vm._s(error))])
+                                    }
+                                  )
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-4" }, [
@@ -42582,6 +42888,7 @@ var render = function() {
                                 }
                               ],
                               staticClass: "form-control",
+                              class: { "is-invalid": error },
                               attrs: {
                                 type: "password",
                                 id: "settings-password-confirmation",
@@ -42603,7 +42910,21 @@ var render = function() {
                                   )
                                 }
                               }
-                            })
+                            }),
+                            _vm._v(" "),
+                            error
+                              ? _c(
+                                  "div",
+                                  { staticClass: "invalid-feedback" },
+                                  _vm._l(
+                                    gqlError.extensions.validation
+                                      .new_password_confirmation,
+                                    function(error) {
+                                      return _c("div", [_vm._v(_vm._s(error))])
+                                    }
+                                  )
+                                )
+                              : _vm._e()
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group col-md-12" }, [
@@ -59854,7 +60175,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! graphql-tag */ "./node_modules/graphql-tag/src/index.js");
 /* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_0__);
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["mutation (\n        $current_password: String\n        $new_password: String\n        $new_password_confirmation: String\n    ){\n        updatePassword(\n            current_password: $current_password\n            new_password: $new_password\n            new_password_confirmation: $new_password_confirmation\n        ) {\n            first_name\n        }\n    }\n    "]);
+  var data = _taggedTemplateLiteral(["mutation (\n        $current_password: String\n        $new_password: String\n        $new_password_confirmation: String\n    ){\n        updatePassword(\n            current_password: $current_password\n            new_password: $new_password\n            new_password_confirmation: $new_password_confirmation\n        ) {\n            status\n        }\n    }\n    "]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -59864,7 +60185,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["mutation (\n        $id: ID!\n        $name: String\n    ) {\n        updateName(\n            id: $id\n            name: $name\n        ) {\n            id\n            name\n        }\n    }"]);
+  var data = _taggedTemplateLiteral(["mutation (\n        $name: String\n    ) {\n        updateName(\n            name: $name\n        ) {\n            name\n        }\n    }"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -59874,7 +60195,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["mutation (\n        $id: ID!\n        $email: String\n    ) {\n        updateEmail(\n            id: $id\n            email: $email\n        ) {\n            id\n            email\n        }\n    }"]);
+  var data = _taggedTemplateLiteral(["mutation (\n        $email: String\n    ) {\n        updateEmail(\n            email: $email\n        ) {\n            email\n        }\n    }"]);
 
   _templateObject2 = function _templateObject2() {
     return data;

@@ -15,18 +15,29 @@ type Mutation{
         about: String,
     ): User @update
     updateEmail(
-        id: ID!,
-        email: String @rules(apply: ["string", "unique:users,email"], messages: { unique: "There's already a user registered with that email"})
-    ): User @update
+        email: String @rules(
+            apply: ["string", "unique:users,email","email"],
+            messages: {
+                email: "Your email is not properly formatted",
+                unique: "There's already a user registered with that email"
+            })
+    ): UserPayload @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@updateEmail")
     updateName(
-        id: ID!,
-        name: String @rules(apply: ["string", "unique:users,name"], messages: { unique: "There's already a user registered with that username"})
-    ): User @update
+        name: String @rules(
+            apply: ["string", "unique:users,name"],
+            messages: {
+                unique: "There's already a user registered with that username"
+            })
+    ): UserPayload @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@updateName")
     updatePassword(
         current_password: String
-        new_password: String
+        new_password: String  @rules(
+             apply: ["string", "confirmed"],
+             messages: {
+                 unique: "New password and confirmation do not match"
+             })
         new_password_confirmation: String
-    ): User @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@changePassword")
+    ): UserPayload @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@updatePassword")
 }
 
 #import schemas/user.graphql

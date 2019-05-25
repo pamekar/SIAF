@@ -36,6 +36,8 @@
 <script src="{{$public}}/js/oneui.app.min-4.2.js"></script>
 <script src="{{$public}}/js/chart.bundle.min.js"></script>
 <script src="{{$public}}/js/be_pages_dashboard.min.js"></script>
+<script src="{{$public}}/js/bootstrap-notify.min.js"></script>
+<script>jQuery(function(){ One.helpers('notify'); });</script>
 <script src="{{$public}}/js/app.js"></script>
 </body>
 </html>

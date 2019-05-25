@@ -17,3 +17,7 @@ type User {
     pending: String
     resolved: String
 }
+
+type UserPayload {
+    status: String
+}

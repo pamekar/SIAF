@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const mutations = {
-    updateUser: gql`mutation (
+    updateUser:     gql`mutation (
         $id: ID!
         $first_name: String
         $last_name: String
@@ -37,31 +37,25 @@ export const mutations = {
             about
         }
     }`,
-    updateEmail: gql`mutation (
-        $id: ID!
+    updateEmail:    gql`mutation (
         $email: String
     ) {
         updateEmail(
-            id: $id
             email: $email
         ) {
-            id
             email
         }
     }`,
-    updateName: gql`mutation (
-        $id: ID!
+    updateName:     gql`mutation (
         $name: String
     ) {
         updateName(
-            id: $id
             name: $name
         ) {
-            id
             name
         }
     }`,
-    updatePassword:gql`mutation (
+    updatePassword: gql`mutation (
         $current_password: String
         $new_password: String
         $new_password_confirmation: String
@@ -71,7 +65,7 @@ export const mutations = {
             new_password: $new_password
             new_password_confirmation: $new_password_confirmation
         ) {
-            first_name
+            status
         }
     }
     `

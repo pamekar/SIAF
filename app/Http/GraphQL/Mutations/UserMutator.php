@@ -4,6 +4,7 @@
 namespace App\Http\GraphQL\Mutations;
 
 
+use App\Exceptions\PasswordException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -12,26 +13,55 @@ use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 class UserMutator
 {
 
+    /**
+     * @param                $root
+     * @param array          $args
+     * @param GraphQLContext $context
+     *
+     * @return array
+     */
+    public function updateEmail($root, array $args, GraphQLContext $context)
+    {
+        $user = $context->user();
+        $user->email = $args['email'];
+        $user->save();
+        return ['email' => $user->email];
+    }
+
+    /**
+     * @param                $root
+     * @param array          $args
+     * @param GraphQLContext $context
+     *
+     * @return array
+     */
+    public function updateName($root, array $args, GraphQLContext $context)
+    {
+        $user = $context->user();
+        $user->name = $args['name'];
+        $user->save();
+        return ['name' => $user->name];
+    }
 
     /**
      * Change password.
      *
      * @param Request $request
      *
-     * @return $this|\Illuminate\Http\RedirectResponse
+     * @return array
      */
-    public function changePassword($root, array $args, GraphQLContext $context)
+    public function updatePassword($root, array $args, GraphQLContext $context)
     {
+
         $user = $context->user();
         $this->validator($args)->validate();
         if (Hash::check($args['current_password'], $user->password)) {
-            $user->password = $args['new_password'];
+            $user->password = Hash::make($args['new_password']);
             $user->save();
-            return response()->json(['message' => 'Password change successfully!'],
-                200);
+            return ['status' => 'Password change successfully!'];
         } else {
-            return response()->json(['message' => 'Current password is incorrect'],
-                '403');
+            throw new PasswordException('Incorrect Password',
+                'current_password', 'You entered an incorrect password');
         }
     }
 
