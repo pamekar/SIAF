@@ -38,7 +38,7 @@
                                     <img :src="avatar" style="cursor: pointer; width:80%;" alt="" class="rounded" v-if="avatar">
                                     <img :src="user.avatar" style="cursor: pointer; width:80%;" alt="" class="rounded" v-else>
                                 </div>
-                                <v-uploader :preview="false" uploadFileObjName="avatar" file-exts-type="jpeg,jpg,gif,png" @done="fileUploaded" button-text="Change Image"></v-uploader>
+                                <v-uploader :preview="false" uploadFileObjName="avatar" file-exts-type="jpeg,jpg,gif,png" :before-upload="beginUpload" @done="fileUploaded" button-text="Change Image" title="Change Image"></v-uploader>
                             </div>
                         </div>
 
@@ -238,7 +238,8 @@
 <script>
     import {queries} from '../queries'
     import {mutations} from '../mutations'
-    
+    import NProgress from '../uiux/js/nprogress.js'
+
     export default {
         data() {
             return {
@@ -284,6 +285,9 @@
                         break;
                 }
             },
+            beginUpload: function(){
+                NProgress.done('start')
+            },
             createImage(file) {
                 let reader = new FileReader();
 
@@ -293,8 +297,9 @@
                 reader.readAsDataURL(file);
             },
             fileUploaded: function (files) {
-                console.log(files[0].url)
-                this.user.avatar = files[0].url;
+                this.avatar = files[0].url;
+                this.user.avatar = files[0].path;
+                NProgress.done()
             },
             notifyStatus: function (type, message) {
                 let icon = 'fa fa-check mr-1';
@@ -309,7 +314,8 @@
                         icon = 'fa fa-exclamation mr-1';
                         break;
                 }
-                One.helpers('notify', {type: type, icon: icon, message: message})
+                One.helpers('notify', {type: type, icon: icon, message: message});
+                NProgress.done();
             },
             userImageChanged(e) {
                 let files = e.target.files || e.dataTransfer.files;
@@ -323,6 +329,9 @@
             
         },
         components: {},
-        computed:   {}
+        computed:   {},
+        updated: function(){
+            NProgress.done();
+        }
     }
 </script>

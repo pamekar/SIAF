@@ -39,7 +39,8 @@
 <script>
     import {queries} from '../queries'
     import {mutations} from '../mutations'
-    
+    import NProgress from '../uiux/js/nprogress.js'
+
     export default {
         
         data() {
@@ -118,6 +119,9 @@
             
         },
         components: {},
-        computed:   {}
+        computed:   {},
+        updated: function(){
+            NProgress.done();
+        }
     }
 </script>

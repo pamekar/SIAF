@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueHeadful from 'vue-headful';
 import './uiux/css/nprogress.css';
+import NProgress from './uiux/js/nprogress.js'
 import App from './App.vue';
 import router from './routes.js';
 import functions from './functions.js';
@@ -18,14 +19,15 @@ Vue.use(Viewer);
 // v-uploader plugin global config
 const uploaderConfig = {
     // file uploader service url
-    uploadFileUrl:       '/api/media/upload',
+    uploadFileUrl: '/api/media/upload',
     // file delete service url
-    deleteFileUrl:       '/api/media/remove',
+    deleteFileUrl: '/api/media/remove',
     // set the way to show upload message(upload fail message)
-    showMessage:         (vue, message) => {
+    showMessage:   (vue, message) => {
         //using v-dialogs to show message
         One.helpers('notify', {type: 'info', icon: '', message: message});
-    }
+    },
+    language:      "en"
 };
 
 
@@ -47,6 +49,9 @@ const cache = new InMemoryCache();
 const apolloProvider = new VueApollo({
     defaultClient: new ApolloClient({
         uri: "/gql",
+        request: operation => {
+            NProgress.start();
+        }
     })
 });
 
