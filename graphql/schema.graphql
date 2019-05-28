@@ -1,34 +1,70 @@
+scalar File @scalar(class: "App\\GraphQL\\Scalars\\File")
+
 type Query {
     user: User! @auth
 }
 type Mutation{
     updateUser(
-        id: ID!,
-        first_name: String,
-        last_name: String,
-        phone_no: String,
-        linkedin: String,
-        instagram: String,
-        facebook: String,
-        twitter: String,
-        avatar: String,
-        about: String,
-    ): User @update
+        first_name: String @rules(
+            apply: ["max:25"],
+            messages: {
+                max: "You've exceeded the 25 char limit",
+            }),
+        last_name: String @rules(
+             apply: ["max:25"],
+             messages: {
+                 max: "You've exceeded the 25 char limit",
+             }),
+        phone_no: String @rules(
+            apply: ["max:15"],
+            messages: {
+                max: "You've exceeded the 15 char limit",
+            }),
+        linkedin: String @rules(
+            apply: ["max:20"],
+            messages: {
+                max: "You've exceeded the 20 char limit",
+            }),
+        instagram: String @rules(
+             apply: ["max:20"],
+             messages: {
+                 max: "You've exceeded the 20 char limit",
+             }),
+        facebook: String @rules(
+            apply: ["max:140"],
+            messages: {
+                max: "You've exceeded the 140 char limit",
+            }),
+        twitter: String @rules(
+           apply: ["max:140"],
+           messages: {
+               max: "You've exceeded the 140 char limit",
+           }),
+        avatar: File,
+        about: String @rules(
+            apply: ["max:140"],
+            messages: {
+                max: "You've exceeded the 140 char limit",
+            }),
+    ): User @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updateUser")
     updateEmail(
         email: String @rules(
-            apply: ["string", "unique:users,email","email"],
+            apply: ["string", "unique:users,email","email", "max:100"],
             messages: {
+                max:        "Your email cannot be more than 100 characters"
                 email: "Your email is not properly formatted",
                 unique: "There's already a user registered with that email"
             })
-    ): UserPayload @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@updateEmail")
+    ): UserPayload @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updateEmail")
     updateName(
         name: String @rules(
-            apply: ["string", "unique:users,name"],
+            apply: ["string", "unique:users,name", "max:15","alpha_dash"],
             messages: {
-                unique: "There's already a user registered with that username"
+                max:        "Your username cannot be more than 15 characters"
+                unique:     "There's already a user registered with that username"
+                alpha_dash: "Only alpha-numeric characters, as well as dashes and underscores are allowed"
             })
-    ): UserPayload @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@updateName")
+    ): UserPayload @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updateName")
     updatePassword(
         current_password: String
         new_password: String  @rules(
@@ -37,7 +73,7 @@ type Mutation{
                  unique: "New password and confirmation do not match"
              })
         new_password_confirmation: String
-    ): UserPayload @field(resolver: "App\\Http\\GraphQL\\Mutations\\UserMutator@updatePassword")
+    ): UserPayload @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updatePassword")
 }
 
 #import schemas/user.graphql
