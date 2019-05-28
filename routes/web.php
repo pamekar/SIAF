@@ -52,6 +52,7 @@ if (!config('app.isDemo')) {
             Route::get('/home', 'HomeController@index')->name('home');
             Route::post('/contact', 'HomeController@contact')->name('contact');
             Route::get('/donate', 'DonateController@index')->name('donate');
+            Route::resource('posts', 'PostsController');
         });
 } else {
 
