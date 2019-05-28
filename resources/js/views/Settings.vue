@@ -32,7 +32,16 @@
                 </div>
                 <div class="block-content">
                     <div class="row">
-                        <div class="col-md-8 col-sm-6">
+                        <div class="col-sm-4">
+                            <div class="align-items-center" v-viewer="{movable: false}">
+                                <div class="text-center mb-3">
+                                    <img :src="user.avatar" style="cursor: pointer; width:80%;" alt="" class="rounded">
+                                </div>
+                                <v-uploader :preview="false" uploadFileObjName="avatar" file-exts-type="jpeg,jpg,gif,png" @done="fileUploaded" button-text="Change Image"></v-uploader>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8">
                             <ApolloMutation :mutation="$mutations.updateUser" :variables="user" @done="notifyStatus('success','Your details have been updated successfully')" @error="notifyStatus('danger','Oops! An error occurred')">
                                 <template slot-scope="{mutate, loading, error, gqlError}" :disabled="loading">
                                     <form class="mb-5 row" action="/user/settings" method="POST" @submit.prevent="mutate()">
@@ -276,6 +285,18 @@
                         break;
                 }
             },
+            createImage(file) {
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    this.avatar = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+            fileUploaded: function (files) {
+                console.log(files[0].url)
+                this.user.avatar = files[0].url;
+            },
             notifyStatus: function (type, message) {
                 let icon = 'fa fa-check mr-1';
                 switch (status) {
@@ -290,10 +311,17 @@
                         break;
                 }
                 One.helpers('notify', {type: type, icon: icon, message: message})
-            }
+            },
+            userImageChanged(e) {
+                let files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.user.avatar = files[0];
+                this.createImage(files[0]);
+            },
         },
         mounted() {
-
+            
         },
         components: {},
         computed:   {}
