@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
+    use Cachable;
     /**
      * drg >> format amount
      * @param $amount
