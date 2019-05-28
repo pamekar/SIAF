@@ -143,6 +143,7 @@
 
 <script>
     import {queries} from '../queries'
+    import NProgress from '../uiux/js/nprogress.js'
 
     export default {
         data() {
@@ -199,5 +200,8 @@
                 return this.getCount(this.user.pending);
             }
         },
+        updated: function(){
+            NProgress.done();
+        }
     }
 </script>
