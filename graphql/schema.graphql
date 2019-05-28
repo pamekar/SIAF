@@ -1,10 +1,9 @@
-scalar File @scalar(class: "App\\GraphQL\\Scalars\\File")
-
 type Query {
     user: User! @auth
 }
 type Mutation{
     updateUser(
+        id: ID!
         first_name: String @rules(
             apply: ["max:25"],
             messages: {
@@ -40,14 +39,16 @@ type Mutation{
            messages: {
                max: "You've exceeded the 140 char limit",
            }),
-        avatar: File,
+        avatar: String @rules(
+            apply: ["string"]),
         about: String @rules(
             apply: ["max:140"],
             messages: {
                 max: "You've exceeded the 140 char limit",
             }),
-    ): User @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updateUser")
+    ): User @update
     updateEmail(
+        id: ID!
         email: String @rules(
             apply: ["string", "unique:users,email","email", "max:100"],
             messages: {
@@ -55,8 +56,9 @@ type Mutation{
                 email: "Your email is not properly formatted",
                 unique: "There's already a user registered with that email"
             })
-    ): UserPayload @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updateEmail")
+    ): User @update
     updateName(
+        id: ID!
         name: String @rules(
             apply: ["string", "unique:users,name", "max:15","alpha_dash"],
             messages: {
@@ -64,7 +66,7 @@ type Mutation{
                 unique:     "There's already a user registered with that username"
                 alpha_dash: "Only alpha-numeric characters, as well as dashes and underscores are allowed"
             })
-    ): UserPayload @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updateName")
+    ): User @update
     updatePassword(
         current_password: String
         new_password: String  @rules(
