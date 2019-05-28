@@ -17,17 +17,14 @@ Vue.use(Viewer);
 
 // v-uploader plugin global config
 const uploaderConfig = {
-    uploadCustomHeaders: {
-        Authorization: 'Bearer ' + functions.readCookie('jwt_token')
-    },
     // file uploader service url
-    uploadFileUrl:       '/api/instructor/spatie/media/upload',
+    uploadFileUrl:       '/api/media/upload',
     // file delete service url
-    deleteFileUrl:       '/api/instructor/spatie/media/remove',
+    deleteFileUrl:       '/api/media/remove',
     // set the way to show upload message(upload fail message)
     showMessage:         (vue, message) => {
         //using v-dialogs to show message
-        vue.$vDialog.alert(message, null, {messageType: 'error'});
+        One.helpers('notify', {type: 'info', icon: '', message: message});
     }
 };
 
@@ -46,7 +43,6 @@ Vue.prototype.public_ = window.public_;
 
 // Cache implementation
 const cache = new InMemoryCache();
-
 
 const apolloProvider = new VueApollo({
     defaultClient: new ApolloClient({

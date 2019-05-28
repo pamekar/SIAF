@@ -31,6 +31,7 @@
         "apollo-client": "^2.5.1",
         "apollo-link": "^1.2.11",
         "apollo-link-http": "^1.5.14",
+        "apollo-upload-client": "^10.0.1",
         "graphql": "^14.3.0",
         "graphql-anywhere": "^4.2.1",
         "graphql-tag": "^2.10.1",
