@@ -17,6 +17,21 @@ export const queries = {
             resolved
         }
     }`,
+    profile: gql`query {
+        user {
+            id
+            name
+            full_name
+            email
+            phone_no
+            linkedin
+            instagram
+            facebook
+            twitter
+            avatar
+            about
+        }
+    }`,
     settings: gql`query {
         user {
             id

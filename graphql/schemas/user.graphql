@@ -5,6 +5,7 @@ type User {
     email: String!
     first_name: String
     last_name: String
+    full_name: String
     phone_no: String
     linkedin: String
     instagram: String
@@ -19,5 +20,5 @@ type User {
 }
 
 type UserPayload {
-    status: String
+    email: String
 }
