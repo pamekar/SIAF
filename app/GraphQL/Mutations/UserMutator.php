@@ -1,12 +1,14 @@
 <?php
 
 
-namespace App\Http\GraphQL\Mutations;
+namespace App\GraphQL\Mutations;
 
 
 use App\Exceptions\PasswordException;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
@@ -44,11 +46,12 @@ class UserMutator
     }
 
     /**
-     * Change password.
+     * @param                $root
+     * @param array          $args
+     * @param GraphQLContext $context
      *
-     * @param Request $request
-     *
-     * @return boolean
+     * @return bool
+     * @throws PasswordException
      */
     public function updatePassword($root, array $args, GraphQLContext $context)
     {
@@ -58,11 +61,18 @@ class UserMutator
         if (Hash::check($args['current_password'], $user->password)) {
             $user->password = Hash::make($args['new_password']);
             $user->save();
-        return true;
+            return true;
         } else {
             throw new PasswordException('Incorrect Password',
                 'current_password', 'You entered an incorrect password');
         }
+    }
+
+    public function updateUser($root, array $args, GraphQLContext $context)
+    {
+        $user = $context->user();
+        $user->update($args);
+        return $user;
     }
 
     /**

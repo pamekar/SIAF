@@ -76,7 +76,6 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         return $contributions;
     }
 
-
     public function getExpensesAttribute()
     {
         if ($expenses = Redis::get('dashboard.expenses')) {
@@ -90,6 +89,10 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         return $expenses;
     }
 
+    public function getFullNameAttribute()
+    {
+        return "$this->first_name $this->last_name";
+    }
 
     public function getPendingAttribute()
     {
@@ -130,5 +133,13 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function setAvatarAttribute($value)
+    {
+        $avatar = $this->attributes['avatar'];
+        Voyager::image($avatar) === $value ?
+            $this->attributes['avatar'] = $avatar
+            : $this->attributes['avatar'] = str_ireplace('/storage/','',$value);
     }
 }
