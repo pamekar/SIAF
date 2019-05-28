@@ -19,6 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::post('/media/upload','MediaController@upload');
+
 Route::group([
 
     'middleware' => 'api',
