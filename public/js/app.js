@@ -8679,6 +8679,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _queries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../queries */ "./resources/js/queries.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../uiux/js/nprogress.js */ "./resources/js/uiux/js/nprogress.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -8822,6 +8824,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -8874,6 +8877,9 @@ __webpack_require__.r(__webpack_exports__);
     pending: function pending() {
       return this.getCount(this.user.pending);
     }
+  },
+  updated: function updated() {
+    _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_1___default.a.done();
   }
 });
 
@@ -8946,6 +8952,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _queries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../queries */ "./resources/js/queries.js");
 /* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mutations */ "./resources/js/mutations.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../uiux/js/nprogress.js */ "./resources/js/uiux/js/nprogress.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -8984,6 +8992,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9071,7 +9080,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {},
   components: {},
-  computed: {}
+  computed: {},
+  updated: function updated() {
+    _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default.a.done();
+  }
 });
 
 /***/ }),
@@ -9087,6 +9099,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _queries__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../queries */ "./resources/js/queries.js");
 /* harmony import */ var _mutations__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../mutations */ "./resources/js/mutations.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../uiux/js/nprogress.js */ "./resources/js/uiux/js/nprogress.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -9323,6 +9337,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -9341,7 +9357,6 @@ __webpack_require__.r(__webpack_exports__);
         avatar: null,
         about: null
       },
-      userData: {},
       avatar: null,
       editEmail: false,
       editUsername: false,
@@ -9371,6 +9386,9 @@ __webpack_require__.r(__webpack_exports__);
           break;
       }
     },
+    beginUpload: function beginUpload() {
+      _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default.a.done('start');
+    },
     createImage: function createImage(file) {
       var _this = this;
 
@@ -9383,8 +9401,9 @@ __webpack_require__.r(__webpack_exports__);
       reader.readAsDataURL(file);
     },
     fileUploaded: function fileUploaded(files) {
-      console.log(files[0].url);
-      this.user.avatar = files[0].url;
+      this.avatar = files[0].url;
+      this.user.avatar = files[0].path;
+      _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default.a.done();
     },
     notifyStatus: function notifyStatus(type, message) {
       var icon = 'fa fa-check mr-1';
@@ -9408,6 +9427,7 @@ __webpack_require__.r(__webpack_exports__);
         icon: icon,
         message: message
       });
+      _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default.a.done();
     },
     userImageChanged: function userImageChanged(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -9418,7 +9438,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {},
   components: {},
-  computed: {}
+  computed: {},
+  updated: function updated() {
+    _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_2___default.a.done();
+  }
 });
 
 /***/ }),
@@ -9454,7 +9477,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#nprogress{pointer-events:none}#nprogress .bar{background:#fff;position:fixed;z-index:1031;top:0;left:0;width:100%;height:3px}#nprogress .peg{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #fff,0 0 5px #fff;opacity:1;-webkit-transform:rotate(3deg) translate(0px,-4px);transform:rotate(3deg) translate(0px,-4px)}#nprogress .spinner{display:block;position:fixed;z-index:1031;top:15px;right:15px}#nprogress .spinner-icon{width:18px;height:18px;box-sizing:border-box;border:solid 2px transparent;border-top-color:#fff;border-left-color:#fff;border-radius:50%;-webkit-animation:nprogress-spinner 400ms linear infinite;animation:nprogress-spinner 400ms linear infinite}.nprogress-custom-parent{overflow:hidden;position:relative}.nprogress-custom-parent #nprogress .spinner,.nprogress-custom-parent #nprogress .bar{position:absolute}@-webkit-keyframes nprogress-spinner{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@keyframes nprogress-spinner{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}", ""]);
+exports.push([module.i, "#nprogress{pointer-events:none}#nprogress .bar{background:#46c37b;position:fixed;z-index:1031;top:0;left:0;width:100%;height:3px}#nprogress .peg{display:block;position:absolute;right:0;width:100px;height:100%;box-shadow:0 0 10px #fff,0 0 5px #fff;opacity:1;-webkit-transform:rotate(3deg) translate(0px,-4px);transform:rotate(3deg) translate(0px,-4px)}#nprogress .spinner{display:block;position:fixed;z-index:1031;top:15px;right:15px}#nprogress .spinner-icon{width:18px;height:18px;box-sizing:border-box;border:solid 2px transparent;border-top-color:#fff;border-left-color:#fff;border-radius:50%;-webkit-animation:nprogress-spinner 400ms linear infinite;animation:nprogress-spinner 400ms linear infinite}.nprogress-custom-parent{overflow:hidden;position:relative}.nprogress-custom-parent #nprogress .spinner,.nprogress-custom-parent #nprogress .bar{position:absolute}@-webkit-keyframes nprogress-spinner{0%{-webkit-transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg)}}@keyframes nprogress-spinner{0%{-webkit-transform:rotate(0deg);transform:rotate(0deg)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}", ""]);
 
 // exports
 
@@ -42032,11 +42055,17 @@ var render = function() {
                 },
                 [
                   _c("div", { staticClass: "text-center mb-3" }, [
-                    _c("img", {
-                      staticClass: "rounded",
-                      staticStyle: { cursor: "pointer", width: "80%" },
-                      attrs: { src: _vm.user.avatar, alt: "" }
-                    })
+                    _vm.avatar
+                      ? _c("img", {
+                          staticClass: "rounded",
+                          staticStyle: { cursor: "pointer", width: "80%" },
+                          attrs: { src: _vm.avatar, alt: "" }
+                        })
+                      : _c("img", {
+                          staticClass: "rounded",
+                          staticStyle: { cursor: "pointer", width: "80%" },
+                          attrs: { src: _vm.user.avatar, alt: "" }
+                        })
                   ]),
                   _vm._v(" "),
                   _c("v-uploader", {
@@ -42044,7 +42073,9 @@ var render = function() {
                       preview: false,
                       uploadFileObjName: "avatar",
                       "file-exts-type": "jpeg,jpg,gif,png",
-                      "button-text": "Change Image"
+                      "before-upload": _vm.beginUpload,
+                      "button-text": "Change Image",
+                      title: "Change Image"
                     },
                     on: { done: _vm.fileUploaded }
                   })
@@ -60044,19 +60075,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_headful__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_headful__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _uiux_css_nprogress_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./uiux/css/nprogress.css */ "./resources/js/uiux/css/nprogress.css");
 /* harmony import */ var _uiux_css_nprogress_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_uiux_css_nprogress_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
-/* harmony import */ var _routes_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js");
-/* harmony import */ var _functions_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./functions.js */ "./resources/js/functions.js");
-/* harmony import */ var _store_index_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store/index.js */ "./resources/js/store/index.js");
-/* harmony import */ var v_uploader__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! v-uploader */ "./node_modules/v-uploader/dist/v-uploader.js");
-/* harmony import */ var v_uploader__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(v_uploader__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! viewerjs/dist/viewer.css */ "./node_modules/viewerjs/dist/viewer.css");
-/* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! v-viewer */ "./node_modules/v-viewer/dist/v-viewer.js");
-/* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(v_viewer__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! apollo-boost */ "./node_modules/apollo-boost/lib/bundle.esm.js");
-/* harmony import */ var vue_apollo__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-apollo */ "./node_modules/vue-apollo/dist/vue-apollo.esm.js");
-/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! apollo-cache-inmemory */ "./node_modules/apollo-cache-inmemory/lib/bundle.esm.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./uiux/js/nprogress.js */ "./resources/js/uiux/js/nprogress.js");
+/* harmony import */ var _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
+/* harmony import */ var _routes_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./routes.js */ "./resources/js/routes.js");
+/* harmony import */ var _functions_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./functions.js */ "./resources/js/functions.js");
+/* harmony import */ var _store_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./store/index.js */ "./resources/js/store/index.js");
+/* harmony import */ var v_uploader__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! v-uploader */ "./node_modules/v-uploader/dist/v-uploader.js");
+/* harmony import */ var v_uploader__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(v_uploader__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! viewerjs/dist/viewer.css */ "./node_modules/viewerjs/dist/viewer.css");
+/* harmony import */ var viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(viewerjs_dist_viewer_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! v-viewer */ "./node_modules/v-viewer/dist/v-viewer.js");
+/* harmony import */ var v_viewer__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(v_viewer__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var apollo_boost__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! apollo-boost */ "./node_modules/apollo-boost/lib/bundle.esm.js");
+/* harmony import */ var vue_apollo__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-apollo */ "./node_modules/vue-apollo/dist/vue-apollo.esm.js");
+/* harmony import */ var apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! apollo-cache-inmemory */ "./node_modules/apollo-cache-inmemory/lib/bundle.esm.js");
 
 
 
@@ -60071,7 +60104,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_viewer__WEBPACK_IMPORTED_MODULE_10___default.a); // v-uploader plugin global config
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_viewer__WEBPACK_IMPORTED_MODULE_11___default.a); // v-uploader plugin global config
 
 var uploaderConfig = {
   // file uploader service url
@@ -60086,30 +60120,34 @@ var uploaderConfig = {
       icon: '',
       message: message
     });
-  }
+  },
+  language: "en"
 }; // install plugin with options
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_uploader__WEBPACK_IMPORTED_MODULE_8___default.a, uploaderConfig);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(v_uploader__WEBPACK_IMPORTED_MODULE_9___default.a, uploaderConfig);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-_functions_js__WEBPACK_IMPORTED_MODULE_6__["default"].setupAxios();
+_functions_js__WEBPACK_IMPORTED_MODULE_7__["default"].setupAxios();
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('vue-headful', vue_headful__WEBPACK_IMPORTED_MODULE_2___default.a); // drg >> set global variables
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.public_ = window.public_; // Cache implementation
 
-var cache = new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_13__["InMemoryCache"]();
-var apolloProvider = new vue_apollo__WEBPACK_IMPORTED_MODULE_12__["default"]({
-  defaultClient: new apollo_boost__WEBPACK_IMPORTED_MODULE_11__["default"]({
-    uri: "/gql"
+var cache = new apollo_cache_inmemory__WEBPACK_IMPORTED_MODULE_14__["InMemoryCache"]();
+var apolloProvider = new vue_apollo__WEBPACK_IMPORTED_MODULE_13__["default"]({
+  defaultClient: new apollo_boost__WEBPACK_IMPORTED_MODULE_12__["default"]({
+    uri: "/gql",
+    request: function request(operation) {
+      _uiux_js_nprogress_js__WEBPACK_IMPORTED_MODULE_4___default.a.start();
+    }
   })
 });
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_apollo__WEBPACK_IMPORTED_MODULE_12__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_apollo__WEBPACK_IMPORTED_MODULE_13__["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   render: function render(h) {
-    return h(_App_vue__WEBPACK_IMPORTED_MODULE_4__["default"]);
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_5__["default"]);
   },
-  router: _routes_js__WEBPACK_IMPORTED_MODULE_5__["default"],
-  store: _store_index_js__WEBPACK_IMPORTED_MODULE_7__["default"],
+  router: _routes_js__WEBPACK_IMPORTED_MODULE_6__["default"],
+  store: _store_index_js__WEBPACK_IMPORTED_MODULE_8__["default"],
   apolloProvider: apolloProvider
 });
 
