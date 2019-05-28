@@ -140,6 +140,6 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
         $avatar = $this->attributes['avatar'];
         Voyager::image($avatar) === $value ?
             $this->attributes['avatar'] = $avatar
-            : $this->attributes['avatar'] = str_ireplace('/storage/','',$value);
+            : $this->attributes['avatar'] = $value;
     }
 }

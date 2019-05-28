@@ -35,7 +35,8 @@
                         <div class="col-sm-4">
                             <div class="align-items-center" v-viewer="{movable: false}">
                                 <div class="text-center mb-3">
-                                    <img :src="user.avatar" style="cursor: pointer; width:80%;" alt="" class="rounded">
+                                    <img :src="avatar" style="cursor: pointer; width:80%;" alt="" class="rounded" v-if="avatar">
+                                    <img :src="user.avatar" style="cursor: pointer; width:80%;" alt="" class="rounded" v-else>
                                 </div>
                                 <v-uploader :preview="false" uploadFileObjName="avatar" file-exts-type="jpeg,jpg,gif,png" @done="fileUploaded" button-text="Change Image"></v-uploader>
                             </div>
@@ -239,7 +240,6 @@
     import {mutations} from '../mutations'
     
     export default {
-        
         data() {
             return {
                 user:         {
@@ -255,7 +255,6 @@
                     avatar:     null,
                     about:      null
                 },
-                userData:     {},
                 avatar:       null,
                 editEmail:    false,
                 editUsername: false,
