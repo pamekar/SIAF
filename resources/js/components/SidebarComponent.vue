@@ -52,10 +52,10 @@
                 </li>
                 <li class="nav-main-heading">User</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link disabled" href="/users/profile">
+                    <router-link class="nav-main-link disabled" :to="{name:'profile'}">
                         <i class="nav-main-link-icon si si-speedometer"></i>
                         <span class="nav-main-link-name">Profile</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-main-item">
                     <router-link class="nav-main-link disabled" :to="{name:'settings'}">

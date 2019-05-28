@@ -8,6 +8,7 @@ import Contribution from './views/Contribution.vue'
 import ContributionHistory from './views/ContributionHistory.vue'
 import ContributionMake from './views/ContributionMake.vue'
 import Members from './views/Members.vue'
+import Profile from './views/Profile.vue'
 import Settings from './views/Settings.vue'
 
 const Error404 = {
@@ -64,6 +65,11 @@ const routes = [
         path:      '/user/members',
         name:      'members',
         component: Members
+    },
+    {
+        path:      '/user/profile',
+        name:      'profile',
+        component: Profile
     },
     {
         path:      '/user/settings',
