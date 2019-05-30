@@ -39,7 +39,7 @@ type Mutation{
            messages: {
                max: "You've exceeded the 140 char limit",
            }),
-        avatar: String @rules(
+        avatar: String! @rules(
             apply: ["string"]),
         about: String @rules(
             apply: ["max:140"],

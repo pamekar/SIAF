@@ -286,6 +286,7 @@
                 }
             },
             beginUpload: function(){
+                this.user.avatar = null;
                 NProgress.done('start')
             },
             createImage(file) {
