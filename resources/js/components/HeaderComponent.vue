@@ -77,7 +77,8 @@
                                 <i class="si si-lock ml-1"></i>
                             </a>
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
-                               href="op_auth_signin.html">
+                               href="/logout" title=""
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <span>Log Out</span>
                                 <i class="si si-logout ml-1"></i>
                             </a>

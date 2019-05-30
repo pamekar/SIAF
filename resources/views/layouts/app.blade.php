@@ -42,5 +42,8 @@
         One.helpers(['notify', 'maxlength']);
     });</script>
 <script src="{{$public.mix("/js/app.js")}}"></script>
+<form id="logout-form" action="{{ url('/logout') }}"
+      method="POST" style="display: none;"
+>{{ csrf_field() }}</form>
 </body>
 </html>

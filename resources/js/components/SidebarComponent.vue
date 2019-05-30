@@ -63,6 +63,13 @@
                         <span class="nav-main-link-name">Settings</span>
                     </router-link>
                 </li>
+                <li class="nav-main-item">
+                    <a class="nav-main-link" href="/logout" title=""
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="nav-main-link-icon si si-logout"></i>
+                        <span class="nav-main-link-name">Logout</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
