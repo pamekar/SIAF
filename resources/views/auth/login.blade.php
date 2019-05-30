@@ -26,8 +26,8 @@
                             <p class="mb-2">
                                 <img src="{{$public}}/png/favicon-32x32.png" alt=""> <span class="font-w700 font-size-h3"> SIAF</span> <span class="font-w400">NG</span>
                             </p>
+                            <p>Welcome, please login.</p>
                         </div>
-                        <p>Welcome, please login.</p>
                         <form class="js-validation-signin" action="{{route('login')}}" method="POST">
                             @csrf
                             <div class="py-3">
