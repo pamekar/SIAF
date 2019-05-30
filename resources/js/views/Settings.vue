@@ -46,6 +46,9 @@
                             <ApolloMutation :mutation="$mutations.updateUser" :variables="user" @done="notifyStatus('success','Your details have been updated successfully')" @error="notifyStatus('danger','Oops! An error occurred')">
                                 <template slot-scope="{mutate, loading, error, gqlError}" :disabled="loading">
                                     <form class="mb-5 row" action="/user/settings" method="POST" @submit.prevent="mutate()">
+                                        <div v-if="error" class="alert alert-danger">
+                                            {{gqlError.extensions.validation.avatar[1]}}
+                                        </div>
                                         <div class="form-group col-md-6">
                                             <label for="settings-first-name">First Name</label>
                                             <input type="text" class="form-control js-maxlength" data-threshold="15" :class="{'is-invalid':error}" v-model="user.first_name" id="settings-first-name" name="first_name" placeholder="Your First Name.." maxlength="25">

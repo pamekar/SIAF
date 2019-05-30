@@ -11,7 +11,7 @@ type User {
     instagram: String
     facebook: String
     twitter: String
-    avatar: String
+    avatar: String!
     about: String
     contributions: String
     expenses: String

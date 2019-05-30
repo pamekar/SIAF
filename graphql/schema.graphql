@@ -39,8 +39,12 @@ type Mutation{
            messages: {
                max: "You've exceeded the 140 char limit",
            }),
-        avatar: String! @rules(
-            apply: ["string"]),
+        avatar: String @rules(
+            apply: ["string","required"],
+            messages:{
+                required: "Your profile picture is not yet uploaded. It is required!"
+            }
+            ),
         about: String @rules(
             apply: ["max:140"],
             messages: {

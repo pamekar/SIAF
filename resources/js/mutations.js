@@ -10,7 +10,7 @@ export const mutations = {
         $instagram: String
         $facebook: String
         $twitter: String
-        $avatar: String!
+        $avatar: String
         $about: String
     ) {
         updateUser(
