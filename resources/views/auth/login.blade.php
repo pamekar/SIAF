@@ -19,7 +19,11 @@
                 </div>
                 <div class="block-content">
                     <div class="p-sm-3 px-lg-4 py-lg-5">
-                        <h1 class="mb-2">{{setting('site.title_abbr')}}</h1>
+                        <div class="text-center">
+                            <p class="mb-2">
+                                <img src="{{$public}}/png/favicon-32x32.png" alt=""> <span class="font-w700 font-size-h3"> SIAF</span> <span class="font-w400">NG</span>
+                            </p>
+                        </div>
                         <p>Welcome, please login.</p>
                         <form class="js-validation-signin" action="{{route('login')}}" method="POST">
                             @csrf
