@@ -65,26 +65,26 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
 
     public function getContributionsAttribute()
     {
-        if ($contributions = Redis::get('dashboard.contributions')) {
+        /*if ($contributions = Redis::get('dashboard.contributions')) {
             return $contributions;
-        }
+        }*/
 
         $contributions = Contribution::sum('amount') / 100;
 
-        Redis::setex('dashboard.contributions', 60 * 60 * 24, $contributions);
+//        Redis::setex('dashboard.contributions', 60 * 60 * 24, $contributions);
 
         return $contributions;
     }
 
     public function getExpensesAttribute()
     {
-        if ($expenses = Redis::get('dashboard.expenses')) {
+        /*if ($expenses = Redis::get('dashboard.expenses')) {
             return $expenses;
-        }
+        }*/
 
         $expenses = $expenses = Expense::sum('amount') / 100;
 
-        Redis::setex('dashboard.expenses', 60 * 60 * 24, $expenses);
+//        Redis::setex('dashboard.expenses', 60 * 60 * 24, $expenses);
 
         return $expenses;
     }
@@ -96,26 +96,26 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
 
     public function getPendingAttribute()
     {
-        if ($pending = Redis::get('dashboard.pending')) {
+        /*if ($pending = Redis::get('dashboard.pending')) {
             return $pending;
-        }
+        }*/
 
         $pending = Complaint::where('status', 'pending')->count();
 
-        Redis::setex('dashboard.pending', 60 * 60 * 24, $pending);
+        /*Redis::setex('dashboard.pending', 60 * 60 * 24, $pending);*/
 
         return $pending;
     }
 
     public function getResolvedAttribute()
     {
-        if ($resolved = Redis::get('dashboard.resolved')) {
+        /*if ($resolved = Redis::get('dashboard.resolved')) {
             return $resolved;
-        }
+        }*/
 
         $resolved = Complaint::where('status', 'resolved')->count();
 
-        Redis::setex('dashboard.resolved', 60 * 60 * 24, $resolved);
+//        Redis::setex('dashboard.resolved', 60 * 60 * 24, $resolved);
 
         return $resolved;
     }
