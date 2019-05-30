@@ -10,15 +10,15 @@
                         data-action="sidebar_mini_toggle">
                     <i class="fa fa-fw fa-ellipsis-v"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-dual mr-2" data-toggle="modal"
+                <!--<button type="button" class="btn btn-sm btn-dual mr-2" data-toggle="modal"
                         data-target="#one-modal-apps">
                     <i class="si si-grid"></i>
-                </button>
-                <button type="button" class="btn btn-sm btn-dual d-sm-none" data-toggle="layout"
+                </button>-->
+                <!--<button type="button" class="btn btn-sm btn-dual d-sm-none" data-toggle="layout"
                         data-action="header_search_on">
                     <i class="si si-magnifier"></i>
-                </button>
-                <form class="d-none d-sm-inline-block"
+                </button>-->
+                <!--<form class="d-none d-sm-inline-block"
                       action="https://demo.pixelcave.com/oneui-remastered/be_pages_generic_search.html" method="POST">
                     <div class="input-group input-group-sm">
                         <input type="text" class="form-control form-control-alt" placeholder="Search.."
@@ -29,7 +29,7 @@
                         </span>
                         </div>
                     </div>
-                </form>
+                </form>-->
             </div>
             <div class="d-flex align-items-center">
                 <div class="dropdown d-inline-block ml-2">
@@ -48,34 +48,35 @@
                         </div>
                         <div class="p-2">
                             <h5 class="dropdown-header text-uppercase">User Options</h5>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            <!--<a class="dropdown-item d-flex align-items-center justify-content-between"
                                href="be_pages_generic_inbox.html">
                                 <span>Inbox</span>
                                 <span>
                                 <span class="badge badge-pill badge-primary">3</span>
                                 <i class="si si-envelope-open ml-1"></i>
                             </span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                               href="be_pages_generic_profile.html">
+                            </a>-->
+                            <router-link class="dropdown-item d-flex align-items-center justify-content-between"
+                                         :to="{name:'profile'}">
                                 <span>Profile</span>
                                 <span>
                                 <span class="badge badge-pill badge-success">1</span>
                                 <i class="si si-user ml-1"></i>
                             </span>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
-                               href="javascript:void(0)">
+                            </router-link>
+                            <router-link class="dropdown-item d-flex align-items-center justify-content-between"
+                               :to="{name:'settings'}">
                                 <span>Settings</span>
                                 <i class="si si-settings"></i>
-                            </a>
+                            </router-link>
                             <div role="separator" class="dropdown-divider"></div>
                             <h5 class="dropdown-header text-uppercase">Actions</h5>
-                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            <!--<a class="dropdown-item d-flex align-items-center justify-content-between"
                                href="op_auth_lock.html">
                                 <span>Lock Account</span>
                                 <i class="si si-lock ml-1"></i>
                             </a>
+                            -->
                             <a class="dropdown-item d-flex align-items-center justify-content-between"
                                href="/logout" title=""
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -85,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dropdown d-inline-block ml-2">
+                <!--<div class="dropdown d-inline-block ml-2">
                     <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="si si-bell"></i>
@@ -170,14 +171,17 @@
                             </a>
                         </div>
                     </div>
-                </div>
-                <button type="button" class="btn btn-sm btn-dual ml-2" data-toggle="layout"
+                </div>-->
+                <!--<button type="button" class="btn btn-sm btn-dual ml-2" data-toggle="layout"
                         data-action="side_overlay_toggle">
                     <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
+                </button>-->
+                <button type="button" class="btn btn-sm btn-dual ml-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Log Out">
+                    <i class="fa fa-fw fa-sign-out-alt fa-flip-horizontal"></i>
                 </button>
             </div>
         </div>
-        <div id="page-header-search" class="overlay-header bg-white">
+        <!--<div id="page-header-search" class="overlay-header bg-white">
             <div class="content-header">
                 <form class="w-100" action="https://demo.pixelcave.com/oneui-remastered/be_pages_generic_search.html"
                       method="POST">
@@ -193,7 +197,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div>-->
         <div id="page-header-loader" class="overlay-header bg-white">
             <div class="content-header">
                 <div class="w-100 text-center">
@@ -208,10 +212,10 @@
 
     export default {
         data() {
-            return{
-                user:{
-                    name:"",
-                    avatar:""
+            return {
+                user: {
+                    name:   "",
+                    avatar: ""
                 }
             }
         },
