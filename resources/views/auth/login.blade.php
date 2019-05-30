@@ -41,8 +41,8 @@
                                            name="password" required placeholder="{{ __('Password') }}">
                                     @if ($errors->has('password'))
                                         <div class="invalid-feedback" role="alert">
-                                        {{ $errors->first('password') }}
-                                    </div>
+                                            {{ $errors->first('password') }}
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="form-group">

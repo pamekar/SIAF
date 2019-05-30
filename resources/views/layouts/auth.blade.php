@@ -38,7 +38,7 @@
 <script src="{{$public}}/js/oneui.core.min-4.2.js"></script>
 <script src="{{$public}}/js/oneui.app.min-4.2.js"></script>
 <script src="{{$public}}/js/jquery.validate.min.js"></script>
-<script src="{{$public}}/js/op_auth_signin.min.js"></script>
+@yield('scripts')
 </body>
 
 </html>
