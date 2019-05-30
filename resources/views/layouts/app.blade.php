@@ -25,7 +25,7 @@
           href="{{$public}}/css/css1969.css?family=Source+Sans+Pro:300,400,400italic,600,700%7COpen+Sans:300,400,400italic,600,700">
     <link rel="stylesheet" id="css-main" href="{{$public}}/css/oneui.min-4.2.css">
     <script>
-        window.public_= "{{$public}}";
+        window.public_ = "{{$public}}";
     </script>
 </head>
 <body>
@@ -38,7 +38,9 @@
 <script src="{{$public}}/js/be_pages_dashboard.min.js"></script>
 <script src="{{$public}}/js/bootstrap-notify.min.js"></script>
 <script src="{{$public}}/js/bootstrap-maxlength.min.js"></script>
-<script>jQuery(function(){ One.helpers(['notify','maxlength']); });</script>
-<script src="{{$public}}/js/app.js"></script>
+<script>jQuery(function () {
+        One.helpers(['notify', 'maxlength']);
+    });</script>
+<script src="{{$public.mix("/js/app.js")}}"></script>
 </body>
 </html>
