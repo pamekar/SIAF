@@ -54,9 +54,10 @@ type Mutation{
     updateEmail(
         id: ID!
         email: String @rules(
-            apply: ["string", "unique:users,email","email", "max:100"],
+            apply: ["required", "string", "unique:users,email","email", "max:100"],
             messages: {
                 max:        "Your email cannot be more than 100 characters"
+                required:   "Sorry, we can't do this without your email address"
                 email: "Your email is not properly formatted",
                 unique: "There's already a user registered with that email"
             })
@@ -64,9 +65,10 @@ type Mutation{
     updateName(
         id: ID!
         name: String @rules(
-            apply: ["string", "unique:users,name", "max:15","alpha_dash"],
+            apply: ["required","string", "unique:users,name", "max:15","alpha_dash"],
             messages: {
                 max:        "Your username cannot be more than 15 characters"
+                required:   "Sorry, we can't do this without your username"
                 unique:     "There's already a user registered with that username"
                 alpha_dash: "Only alpha-numeric characters, as well as dashes and underscores are allowed"
             })
