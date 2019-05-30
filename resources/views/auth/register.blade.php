@@ -9,7 +9,7 @@
                     <div class="p-sm-3 px-lg-4 py-lg-5">
                         <div class="text-center">
                             <p class="mb-2">
-                                <i class="fa fa-2x fa-circle-notch text-primary"></i>
+                                <img src="{{$public}}/png/favicon-32x32.png" alt="">
                             </p>
                             <h1 class="h4  mb-1">
                                 Create Account
