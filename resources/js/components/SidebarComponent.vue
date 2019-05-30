@@ -2,7 +2,7 @@
     <nav id="sidebar" aria-label="Main Navigation">
         <div class="content-header bg-white-5">
             <a class="font-w600 text-dual" href="/">
-                <img :src="public_+'/png/favicon-32x32.png'"></img>
+                <img alt="" :src="public_+'/png/favicon-32x32.png'">
                 <span class="smini-hide pl-3">
                 <span class="font-w700 font-size-h3"> SIAF</span> <span class="font-w400">NG</span>
             </span>

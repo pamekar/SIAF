@@ -35,7 +35,7 @@
                 <div class="dropdown d-inline-block ml-2">
                     <button type="button" class="btn btn-sm btn-dual" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded" :src="user.avatar" alt="Header Avatar"
+                        <img class="rounded" :src="user.avatar" alt=""
                              style="width: 18px;">
                         <span class="d-none d-sm-inline-block ml-1">{{user.name}}</span>
                         <i class="fa fa-fw fa-angle-down d-none d-sm-inline-block"></i>
