@@ -68,6 +68,6 @@
         </div>
     </div>
 @endsection
-@section
+@section('scripts')
     <script src="{{$public}}/js/op_auth_signin.min.js"></script>
 @endsection
