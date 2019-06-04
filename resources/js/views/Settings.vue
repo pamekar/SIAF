@@ -290,7 +290,7 @@
             },
             beginUpload: function(){
                 this.user.avatar = null;
-                NProgress.done('start')
+                NProgress.start()
             },
             createImage(file) {
                 let reader = new FileReader();
