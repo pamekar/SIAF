@@ -17,7 +17,7 @@
     import Header from './components/HeaderComponent.vue'
     import Footer from './components/FooterComponent.vue'
     import Modals from './components/ModalsComponent.vue'
-    
+
     export default {
         name:       'App',
         data() {
@@ -32,6 +32,7 @@
                 const toDepth = to.path.split('/').length
                 const fromDepth = from.path.split('/').length
                 this.transitionName = toDepth < fromDepth ? 'fade-in' : 'fade-out'
+                One.layout('sidebar_close');
             }
         },
         components: {

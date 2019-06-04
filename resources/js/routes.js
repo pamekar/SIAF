@@ -88,7 +88,8 @@ router.beforeResolve((to, from, next) => {
     if (to.name) {
         NProgress.start();
     }
-    next()
+    One.layout('sidebar_close');
+    next();
 });
 
 // drg >> end progress bar after route response
