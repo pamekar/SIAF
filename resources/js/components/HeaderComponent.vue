@@ -60,7 +60,6 @@
                                          :to="{name:'profile'}">
                                 <span>Profile</span>
                                 <span>
-                                <span class="badge badge-pill badge-success">1</span>
                                 <i class="si si-user ml-1"></i>
                             </span>
                             </router-link>
