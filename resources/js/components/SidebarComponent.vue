@@ -7,6 +7,11 @@
                 <span class="font-w700 font-size-h3"> SIAF</span> <span class="font-w400">NG</span>
             </span>
             </a>
+            <div>
+                <a class="d-lg-none text-dual ml-3" data-toggle="layout" data-action="sidebar_close" href="javascript:void(0)">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
         </div>
         <div class="content-side content-side-full">
             <ul class="nav-main">
