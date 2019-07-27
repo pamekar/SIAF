@@ -55,6 +55,7 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    'date_format'=> 'M j, Y',
     /*
     |--------------------------------------------------------------------------
     | Application URL
