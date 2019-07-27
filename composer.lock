@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8dfb3f6b30d2783e6fe7c064839d2e8",
+    "content-hash": "a5451fa6038b22ac937d2f49e0577416",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -5654,6 +5654,51 @@
                 "laravel-dump-server"
             ],
             "time": "2018-10-04T07:22:24+00:00"
+        },
+        {
+            "name": "dczajkowski/auth-tests",
+            "version": "5.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DCzajkowski/auth-tests.git",
+                "reference": "397e10a21e51169eba7695d77d26adc9416db896"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DCzajkowski/auth-tests/zipball/397e10a21e51169eba7695d77d26adc9416db896",
+                "reference": "397e10a21e51169eba7695d77d26adc9416db896",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "DCzajkowski\\AuthTests\\AuthTestsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/AuthTestsServiceProvider.php",
+                    "src/Console/Commands/AuthTestsMakeCommand.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dariusz Czajkowski",
+                    "email": "dare.czajkowski@gmail.com",
+                    "homepage": "http://dczajkowski.com"
+                }
+            ],
+            "description": "Authentication tests for Laravel built-in authentication module.",
+            "time": "2018-12-01T00:25:37+00:00"
         },
         {
             "name": "doctrine/instantiator",
