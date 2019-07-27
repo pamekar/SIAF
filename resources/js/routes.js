@@ -88,7 +88,6 @@ router.beforeResolve((to, from, next) => {
     if (to.name) {
         NProgress.start();
     }
-    One.layout('sidebar_close');
     next();
 });
 

@@ -32,7 +32,6 @@
                 const toDepth = to.path.split('/').length
                 const fromDepth = from.path.split('/').length
                 this.transitionName = toDepth < fromDepth ? 'fade-in' : 'fade-out'
-                One.layout('sidebar_close');
             }
         },
         components: {
