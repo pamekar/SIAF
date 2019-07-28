@@ -29,9 +29,15 @@
         methods:    {},
         watch:      {
             '$route'(to, from) {
-                const toDepth = to.path.split('/').length
-                const fromDepth = from.path.split('/').length
-                this.transitionName = toDepth < fromDepth ? 'fade-in' : 'fade-out'
+                const toDepth = to.path.split('/').length;
+                const fromDepth = from.path.split('/').length;
+                this.transitionName = toDepth < fromDepth ? 'fade-in' : 'fade-out';
+                if(screen.width >= 1200) {
+                    One.layout('sidebar_mini_on');
+                }
+                else{
+                    One.layout('sidebar_close');
+                }
             }
         },
         components: {
