@@ -30,7 +30,6 @@ const uploaderConfig = {
     language:      "en"
 };
 
-
 // install plugin with options
 Vue.use(vUploader, uploaderConfig);
 
@@ -42,6 +41,7 @@ Vue.component('vue-headful', VueHeadful);
 
 // drg >> set global variables
 Vue.prototype.public_ = window.public_;
+Vue.prototype.One = window.One;
 
 // Cache implementation
 const cache = new InMemoryCache();
