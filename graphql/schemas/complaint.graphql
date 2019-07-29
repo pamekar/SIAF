@@ -1,0 +1,17 @@
+type Complaint {
+    id: ID!
+    reference_id: String!
+    user_id: String!
+    title: String
+    description: String
+    summary: String
+    type: String
+    state: String
+    location: String
+    tags: String
+    status: String
+    occurred_at: String
+    created_at: String
+    updated_at: String
+    updated_on: String
+}
