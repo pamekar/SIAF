@@ -1,6 +1,10 @@
 type Query {
     user: User! @auth
+    fetchUser(id: ID! @eq): User @find
+    complaint(id: ID! @eq): Complaint @find
+    complaints: [Complaint!]! @paginate
 }
+
 type Mutation{
     updateUser(
         id: ID!
@@ -51,6 +55,7 @@ type Mutation{
                 max: "You've exceeded the 140 char limit",
             }),
     ): User @update
+
     updateEmail(
         id: ID!
         email: String @rules(
@@ -62,6 +67,7 @@ type Mutation{
                 unique: "There's already a user registered with that email"
             })
     ): User @update
+
     updateName(
         id: ID!
         name: String @rules(
@@ -73,6 +79,7 @@ type Mutation{
                 alpha_dash: "Only alpha-numeric characters, as well as dashes and underscores are allowed"
             })
     ): User @update
+
     updatePassword(
         current_password: String
         new_password: String  @rules(
@@ -85,3 +92,4 @@ type Mutation{
 }
 
 #import schemas/user.graphql
+#import schemas/complaint.graphql
