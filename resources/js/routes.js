@@ -42,7 +42,7 @@ const routes = [
         component: ComplaintsMake
     },
     {
-        path:      '/user/complaints/view/:id',
+        path:      '/user/complaints/:id',
         name:      'complaints-view',
         component: ComplaintsView
     },
