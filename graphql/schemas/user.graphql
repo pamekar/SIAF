@@ -1,6 +1,6 @@
 type User {
     id: ID!
-    is_admin: ID
+    is_admin: String!
     name: String!
     email: String!
     first_name: String
