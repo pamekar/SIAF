@@ -29,10 +29,10 @@
                 </li>
                 <li class="nav-main-heading">Complaints</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link disabled" href="/users/complaints">
+                    <router-link class="nav-main-link disabled" :to="{name:'complaints'}">
                         <i class="nav-main-link-icon si si-book-open"></i>
                         <span class="nav-main-link-name">View Reports</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link disabled" href="/users/report">
@@ -46,8 +46,6 @@
                         <i class="nav-main-link-icon si si-heart"></i>
                         <span class="nav-main-link-name">Contribute</span>
                     </a>
-
-
                 </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link disabled" href="/users/contributions">
