@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 class Complaint extends Model
 {
+    protected $appends = ['view_count'];
+
     /**
      * Attribute summarises complaint description
      *
@@ -23,7 +26,18 @@ class Complaint extends Model
      *
      * @return false|string
      */
-    public function getUpdatedOnAttribute(){
+    public function getUpdatedOnAttribute()
+    {
         return date_format($this->updated_at, config('app.date_format'));
+    }
+
+    /**
+     * Counts the total views of a complaint
+     *
+     * @return mixed
+     */
+    public function getViewCountAttribute()
+    {
+        return Cache::get("complaint.$this->id.views");
     }
 }
