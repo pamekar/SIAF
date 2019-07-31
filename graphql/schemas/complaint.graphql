@@ -1,7 +1,7 @@
 type Complaint {
     id: ID!
     reference_id: String!
-    user_id: String!
+    user_id: Int!
     title: String
     description: String
     summary: String
@@ -14,4 +14,5 @@ type Complaint {
     created_at: String
     updated_at: String
     updated_on: String
+    view_count: Int
 }
