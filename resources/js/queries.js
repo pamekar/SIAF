@@ -7,8 +7,8 @@ export const queries = {
             is_admin
         }
     }`,
-    complaints: gql`query{
-      complaints(count: 10) {
+    complaints: gql`query Complaints($count: Int!, $page: Int, $orderBy: [OrderByClause!]){
+      complaints(count: $count, page: $page, orderBy: $orderBy) {
         paginatorInfo {
           count
           currentPage
@@ -36,7 +36,7 @@ export const queries = {
       }
     }
 `,
-    dashboard: gql`query {
+    dashboard:  gql`query {
         user {
             id
             name
@@ -46,7 +46,7 @@ export const queries = {
             resolved
         }
     }`,
-    profile: gql`query {
+    profile:    gql`query {
         user {
             id
             name
@@ -61,7 +61,7 @@ export const queries = {
             about
         }
     }`,
-    settings: gql`query {
+    settings:   gql`query {
         user {
             id
             name
@@ -77,7 +77,7 @@ export const queries = {
             about
         }
     }`,
-    user: gql`query {
+    user:       gql`query {
         user {
             id
             name

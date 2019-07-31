@@ -1,6 +1,5 @@
 <template>
     <main id="main-container">
-
         <div class="bg-body-light">
             <div class="content content-full">
                 <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
@@ -32,7 +31,7 @@
                     </div>
                 </div>
                 <div class="block-content pb-3">
-                    <div class="list-group">
+                    <div class="list-group mb-3">
                         <div class="list-group-item" v-for="complaint in complaints.data">
                             <div class="media">
                                 <div class="mr-3">
@@ -55,6 +54,24 @@
                             </div>
                         </div>
                     </div>
+                    <nav aria-label="Complaints Navigation">
+                        <paginate
+                                :page-count="complaints.paginatorInfo.lastPage"
+                                :click-handler="getComplaints"
+                                :prev-text="'Prev'"
+                                :next-text="'Next'"
+                                container-class="pagination pagination-sm"
+                                active-class="page-item active"
+                                disabled-class="page-item disabled"
+                                page-class="page-item"
+                                next-class="page-item"
+                                prev-class="page-item"
+                                page-link-class="page-link"
+                                next-link-class="page-link"
+                                prev-link-class="page-link"
+                        >
+                        </paginate>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -64,14 +81,34 @@
 <script>
     import {queries} from '../queries'
     import NProgress from '../uiux/js/nprogress.js'
+    import Paginate from 'vuejs-paginate'
 
+    const count = 10;
     export default {
         apollo:     {
-            complaints: queries.complaints
+            complaints: {
+                query:     queries.complaints,
+                variables: {
+                    count,
+                    page:    1,
+                    orderBy: [
+                        {
+                            field: "updated_at",
+                            order: "DESC"
+                        }
+                    ]
+                }
+            }
         },
         data() {
             return {
-                complaints: [],
+                complaints:  {
+                    paginatorInfo: {
+                        lastPage: 1
+                    }
+                },
+                pageCount:   1,
+                currentPage: 1,
             };
         },
         created() {
@@ -83,28 +120,49 @@
                 let color = colors[Math.floor(Math.random() * colors.length)];
                 return `bg-${color}-light`;
             },
-            badgeColor(status){
-                let color="primary";
+            badgeColor(status) {
+                let color = "primary";
 
-                switch(status){
+                switch (status) {
                     case 'pending':
-                        color="info";
+                        color = "info";
                         break;
                     case 'resolved':
-                        color="success";
+                        color = "success";
                         break;
                     case 'closed':
-                        color="warning";
+                        color = "warning";
                         break;
                 }
 
                 return color;
+            },
+            getComplaints(page = 1, orderBy = []) {
+                this.currentPage = page;
+                // Fetch more data and transform the original result
+                this.$apollo.queries.complaints.fetchMore({
+                    // New variables
+                    variables:   {
+                        page,
+                        count,
+                        orderBy
+                    },
+                    // Transform the previous result with new data
+                    updateQuery: (previousResult, {fetchMoreResult}) => {
+                        const complaints = fetchMoreResult.complaints;
+
+                        return {
+                            complaints: complaints,
+                        }
+                    }
+                });
             }
         },
         mounted() {
-
         },
-        components: {},
+        components: {
+            'paginate': Paginate
+        },
         computed:   {},
         updated:    function () {
             NProgress.done();
