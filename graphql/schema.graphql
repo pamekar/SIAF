@@ -1,8 +1,18 @@
 type Query {
     user: User! @auth
-    fetchUser(id: ID! @eq): User @find
-    complaint(id: ID! @eq): Complaint @find
-    complaints: [Complaint!]! @paginate
+    showUser(id: ID! @eq): User @find
+    showComplaint(id: ID! @eq): Complaint  @field(resolver: "App\\GraphQL\\Queries\\ComplaintQuery@show")
+    complaints(orderBy: [OrderByClause!] @orderBy): [Complaint!]! @paginate
+}
+
+input OrderByClause{
+    field: String!
+    order: SortOrder!
+}
+
+enum SortOrder {
+    ASC
+    DESC
 }
 
 type Mutation{
