@@ -53,6 +53,35 @@
                                 </ul>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="text-justify" style="width:70%">
+                                <h3 class="text-muted">Description</h3>
+                                <p>{{ complaint.description }}</p>
+                            </td>
+                            <td class="d-none d-sm-table-cell font-size-sm table-active">
+                                <h3 class="text-muted">Details</h3>
+                                <ul class="list-group d-md-block text-muted mt-2 mb-0">
+                                    <li class="list-group-item" v-if="!complaint.anonymous">Created By: {{complaint.user.full_name}}</li>
+                                    <li class="list-group-item">Type: {{complaint.type}}</li>
+                                    <li class="list-group-item">State: {{complaint.state}}</li>
+                                    <li class="list-group-item">Location: {{complaint.location}}</li>
+                                    <li class="list-group-item">Tags: {{complaint.tags}}</li>
+                                    <li class="list-group-item">Status: <span :class="`badge badge-pill badge-`+badgeColor(complaint.status)">{{complaint.status}}</span></li>
+                                    <li class="list-group-item">{{complaint.occurred_date}}</li>
+                                    <li class="list-group-item">{{complaint.created_date}}</li>
+                                    <li class="list-group-item">{{complaint.updated_date}}</li>
+                                    <li class="list-group-item">{{complaint.view_count}} view<span v-if="complaint.view_count!==1">s</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr v-if="complaint.remark.length>0 && complaint.show_remarks">
+                            <td class="text-justify" style="width:70%" colspan="2">
+                                <h3 class="text-muted">Remarks</h3>
+                                <div class="list-group d-md-block text-muted mt-2 mb-0" v-for="remark in complaint.remark">
+                                    <div class="list-group-item"><small class="text-muted">{{remark.updated_on}}</small> - {{remark.description}}</div>
+                                </div>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
