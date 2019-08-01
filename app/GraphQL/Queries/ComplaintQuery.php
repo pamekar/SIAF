@@ -43,8 +43,8 @@ class ComplaintQuery
      */
     public function updateViewCount($id)
     {
-        $viewKey = "complaint.$id.views";
-        $viewUser = "complaint.$id.views." . Auth::id();
+        $viewKey = "complaint.$id.view_count";
+        $viewUser = "complaint.$id.viewed." . Auth::id();
         if (!Cache::has($viewUser)) {
             // update view count
             Cache::has($viewKey) ? Cache::increment($viewKey)
