@@ -38,6 +38,11 @@ class Complaint extends Model
      */
     public function getViewCountAttribute()
     {
-        return Cache::get("complaint.$this->id.views");
+        $key = "complaint.$this->id.view_count";
+        if (Cache::missing($key)) {
+            Cache::forever($key, 0);
+        }
+
+        return Cache::get($key);
     }
 }
