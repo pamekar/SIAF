@@ -1,0 +1,6 @@
+type Remark {
+    id: ID!
+    description: String
+    created_at: String
+    updated_at: String
+}
