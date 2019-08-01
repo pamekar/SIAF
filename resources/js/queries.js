@@ -45,20 +45,12 @@ export const queries = {
         }
         data {
           id
-          reference_id
-          user_id
           title
-          description
           summary
           type
-          state
-          location
-          tags
           status
-          occurred_at
-          created_at
-          updated_at
           updated_on
+          view_count
         }
       }
     }
