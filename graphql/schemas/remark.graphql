@@ -3,4 +3,5 @@ type Remark {
     description: String
     created_at: String
     updated_at: String
+    updated_on: String
 }

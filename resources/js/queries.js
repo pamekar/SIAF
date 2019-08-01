@@ -24,6 +24,7 @@ export const queries = {
         show_remarks
         remark {
             description
+            updated_on
         }
         occurred_date
         created_date
