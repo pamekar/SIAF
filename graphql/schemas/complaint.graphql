@@ -2,6 +2,7 @@ type Complaint {
     id: ID!
     reference_id: String!
     user_id: Int!
+    user: User @belongsTo
     title: String
     description: String
     summary: String
@@ -10,9 +11,15 @@ type Complaint {
     location: String
     tags: String
     status: String
+    anonymous: Boolean
+    show_remarks: Boolean
+    remark: [Remark!]! @hasMany
     occurred_at: String
     created_at: String
     updated_at: String
+    occurred_date: String
+    created_date: String
+    updated_date: String
     updated_on: String
     view_count: Int
 }
