@@ -126,4 +126,22 @@ class Complaint extends Model
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 
+    /**
+     * Complaint belongs to a user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    /**
+     * Complaints has many remarks
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function remark(){
+        return $this->hasMany('App\Models\Remark');
+    }
 }
