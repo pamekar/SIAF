@@ -45,4 +45,85 @@ class Complaint extends Model
 
         return Cache::get($key);
     }
+    /**
+     * Get how long ago complaint was Created
+     *
+     * @return string|void
+     */
+    public function getCreatedDateAttribute()
+    {
+        try {
+            return "Created " . $this->howLongAgo($this->created_at);
+        } catch (\Exception $e) {
+            return abort(500, $e->getMessage());
+        }
+    }
+
+    /**
+     * Get how long ago complaint was Created
+     *
+     * @return string|void
+     */
+    public function getOccurredDateAttribute()
+    {
+        try {
+            return "Occurred " . $this->howLongAgo($this->occurred_at);
+        } catch (\Exception $e) {
+            return abort(500, $e->getMessage());
+        }
+    }
+
+    /**
+     * Get how long ago complaint was Created
+     *
+     * @return string|void
+     */
+    public function getUpdatedDateAttribute()
+    {
+        try {
+            return "Updated " . $this->howLongAgo($this->updated_at);
+        } catch (\Exception $e) {
+            return abort(500, $e->getMessage());
+        }
+    }
+
+    /**
+     * Format date by getting time difference, and returning how long ago
+     *
+     * @param $date
+     *
+     * @return string
+     * @throws \Exception
+     */
+    public function howLongAgo($date)
+    {
+        $now = new \DateTime();
+        $ago = new \DateTime($date);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        //  if (!$full)
+        $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
+
 }
