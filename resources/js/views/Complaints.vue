@@ -42,13 +42,14 @@
                                         <router-link :to="{name:'complaints-view',params:{id: complaint.id}}">{{complaint.title}}</router-link>
                                     </h4>
                                     <p class="mb-0">
-                                        <small class="text-muted">{{complaint.updated_on}} -</small>
+                                        <small class="text-muted">{{complaint.updated_on}} - </small>
                                         {{complaint.summary}} ...
                                     </p>
                                     <ul class="list-inline list-inline-horizontal d-md-block font-size-sm text-muted mt-2 mb-0">
                                         <li class="list-inline-item list-group-item px-1 p-0 mr-0 d-inline-block">Type: {{complaint.type}}</li>
                                         <li class="list-inline-item list-group-item px-1 p-0 mr-0 d-inline-block">State: {{complaint.state}}</li>
                                         <li class="list-inline-item list-group-item px-1 p-0 mr-0 d-inline-block">Status: <span :class="`badge badge-pill badge-`+badgeColor(complaint.status)">{{complaint.status}}</span></li>
+                                        <li class="list-inline-item list-group-item px-1 p-0 mr-0 d-inline-block">{{complaint.view_count}} view<span v-if="complaint.view_count!==1">s</span></li>
                                     </ul>
                                 </div>
                             </div>
