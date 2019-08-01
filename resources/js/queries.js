@@ -7,6 +7,33 @@ export const queries = {
             is_admin
         }
     }`,
+    complaint: gql`query Complaint($id: ID!){
+      complaint(id: $id) {
+        id
+        user {
+            full_name
+        }
+        title
+        description
+        type
+        state
+        location
+        tags
+        status
+        anonymous
+        show_remarks
+        remark {
+            description
+        }
+        occurred_date
+        created_date
+        updated_date
+        view_count
+      }
+    }
+
+    
+    `,
     complaints: gql`query Complaints($count: Int!, $page: Int, $orderBy: [OrderByClause!]){
       complaints(count: $count, page: $page, orderBy: $orderBy) {
         paginatorInfo {
