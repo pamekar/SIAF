@@ -45,7 +45,7 @@
                         <div class="col-sm-8">
                             <ApolloMutation :mutation="$mutations.updateUser" :variables="user" @done="notifyStatus('success','Your details have been updated successfully')" @error="notifyStatus('danger','Oops! An error occurred')">
                                 <template slot-scope="{mutate, loading, error, gqlError}" :disabled="loading">
-                                    <form class="mb-5 row" action="/user/settings" method="POST" @submit.prevent="mutate()">
+                                    <form class="mb-5 row" action="javascript:void(0)" method="POST" @submit.prevent="mutate()">
                                         <div v-if="error" class="alert alert-danger">
                                             {{gqlError.extensions.validation.avatar[1]}}
                                         </div>
