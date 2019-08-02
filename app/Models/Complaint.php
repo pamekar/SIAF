@@ -14,6 +14,16 @@ class Complaint extends Model
      *
      * @return bool|string
      */
+    public function getTitleSummaryAttribute()
+    {
+        return substr($this->title, 0, 20);
+    }
+
+    /**
+     * Attribute summarises complaint description
+     *
+     * @return bool|string
+     */
     public function getSummaryAttribute()
     {
         $description = strip_tags($this->description);

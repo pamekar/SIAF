@@ -4,6 +4,7 @@ type Complaint {
     user_id: Int!
     user: User @belongsTo
     title: String
+    title_summary: String
     description: String
     summary: String
     type: String
