@@ -42,13 +42,14 @@ Vue.component('vue-headful', VueHeadful);
 // drg >> set global variables
 Vue.prototype.public_ = window.public_;
 Vue.prototype.One = window.One;
+Vue.prototype.states_ = window.states_;
 
 // Cache implementation
 const cache = new InMemoryCache();
 
 const apolloProvider = new VueApollo({
     defaultClient: new ApolloClient({
-        uri: "/gql",
+        uri:     "/gql",
         request: operation => {
             NProgress.start();
         }

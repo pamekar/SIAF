@@ -26,6 +26,7 @@
     <link rel="stylesheet" id="css-main" href="{{$public}}/css/oneui.min-4.2.css">
     <script>
         window.public_ = "{{$public}}";
+        window.states_ = {!! json_encode(__('constants.states')) !!};
     </script>
 </head>
 <body>
