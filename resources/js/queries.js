@@ -14,6 +14,7 @@ export const queries = {
             full_name
         }
         title
+        title_summary
         description
         type
         state
@@ -32,8 +33,6 @@ export const queries = {
         view_count
       }
     }
-
-    
     `,
     complaints: gql`query Complaints($count: Int!, $page: Int, $orderBy: [OrderByClause!]){
       complaints(count: $count, page: $page, orderBy: $orderBy) {
