@@ -25,9 +25,9 @@
                 <div class="block-header">
                     <h3 class="block-title">Complaints</h3>
                     <div class="block-options">
-                        <button type="submit" class="btn-block-option">
+                        <router-link class="btn-block-option" :to="{name:'complaints-make'}">
                             Make Complaint
-                        </button>
+                        </router-link>
                     </div>
                 </div>
                 <div class="block-content pb-3">

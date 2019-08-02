@@ -16,7 +16,7 @@
                                 <router-link class="link-fx" :to="{name:'complaints'}">Complaints</router-link>
                             </li>
                             <li class="breadcrumb-item" aria-current="page">
-                                {{complaint.title_summary}}
+                                {{complaint.title_summary}}...
                             </li>
                         </ol>
                     </nav>
@@ -28,9 +28,9 @@
                 <div class="block-header">
                     <h3 class="block-title">{{complaint.title}}</h3>
                     <div class="block-options">
-                        <button type="submit" class="btn-block-option">
+                        <router-link class="btn-block-option" :to="{name:'complaints-make'}">
                             Make Complaint
-                        </button>
+                        </router-link>
                     </div>
                 </div>
                 <div class="block-content pb-3">
@@ -74,11 +74,14 @@
                                 </ul>
                             </td>
                         </tr>
-                        <tr v-if="complaint.remark.length>0 && complaint.show_remarks">
+                        <tr v-if="complaint.remark.length>0 && complaint.show_remarks" class="table-active">
                             <td class="text-justify" style="width:70%" colspan="2">
                                 <h3 class="text-muted">Remarks</h3>
                                 <div class="list-group d-md-block text-muted mt-2 mb-0" v-for="remark in complaint.remark">
-                                    <div class="list-group-item"><small class="text-muted">{{remark.updated_on}}</small> - {{remark.description}}</div>
+                                    <div class="list-group-item">
+                                        <small class="text-muted">{{remark.updated_on}} -</small>
+                                        {{remark.description}}
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -97,7 +100,7 @@
     export default {
         apollo:     {
             complaint: {
-                query:     queries.complaint,
+                query: queries.complaint,
                 variables() {
                     return {
                         id: this.$route.params.id
@@ -108,7 +111,7 @@
         data() {
             return {
                 complaint: {},
-                id: this.$route.params.id
+                id:        this.$route.params.id
             };
         },
         created() {

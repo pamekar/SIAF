@@ -35,10 +35,10 @@
                     </router-link>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link disabled" href="/users/report">
+                    <router-link class="nav-main-link disabled" :to="{name:'complaints-make'}">
                         <i class="nav-main-link-icon si si-pencil"></i>
                         <span class="nav-main-link-name">Report an Issue</span>
-                    </a>
+                    </router-link>
                 </li>
                 <li class="nav-main-heading">Contributions</li>
                 <li class="nav-main-item">
