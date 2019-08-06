@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 Auth::routes();
+Route::get('/login/redirect/{provider}', 'Auth\SocialController@redirect')->name('login.social');
+Route::get('/login/callback/{provider}', 'Auth\SocialController@callback');
 
 if (!config('app.isDemo')) {
     Route::group(['namespace' => 'Home'],
