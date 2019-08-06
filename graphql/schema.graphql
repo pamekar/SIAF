@@ -16,7 +16,17 @@ enum SortOrder {
 }
 
 type Mutation{
-    createComplaint(input: ComplaintInput! @spread) : Complaint @create,
+    createComplaint(
+        title: String
+        description: String
+        type: String
+        state: String
+        location: String
+        tags: String
+        anonymous: Boolean
+        public: Boolean
+    ) : ComplaintPayload @field(resolver: "App\\GraphQL\\Mutations\\ComplaintQuery@create"),
+
     updateUser(
         id: ID!
         first_name: String @rules(
@@ -101,19 +111,6 @@ type Mutation{
         new_password_confirmation: String
     ): UserPayload @field(resolver: "App\\GraphQL\\Mutations\\UserMutator@updatePassword")
 }
-
-input ComplaintInput {
-    id: ID!
-    title: String
-    description: String
-    type: String
-    state: String
-    location: String
-    tags: String
-    anonymous: Boolean
-    public: Boolean
-}
-
 
 #import schemas/user.graphql
 #import schemas/complaint.graphql

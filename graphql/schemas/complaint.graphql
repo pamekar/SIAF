@@ -13,6 +13,7 @@ type Complaint {
     tags: String
     status: String
     anonymous: Boolean
+    public: String
     show_remarks: Boolean
     remark: [Remark!]! @hasMany
     occurred_at: String
@@ -23,4 +24,15 @@ type Complaint {
     updated_date: String
     updated_on: String
     view_count: Int
+}
+
+type ComplaintPayload {
+    title: String
+    description: String
+    type: String
+    state: String
+    location: String
+    tags: String
+    anonymous: Boolean
+    public: Boolean
 }
