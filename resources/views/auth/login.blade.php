@@ -27,6 +27,26 @@
                                 <img src="{{$public}}/png/favicon-32x32.png" alt=""> <span class="font-w700 font-size-h3"> SIAF</span> <span class="font-w400">NG</span>
                             </p>
                             <p>Welcome, please login.</p>
+                            <div class="list-inline text-center">
+                                <div class="list-inline-item">
+                                    <a href="{{route('login.social',['provider'=>'facebook'])}}" class=""
+                                       style="color:#4266b2" title="Login via Facebook">
+                                        <span class="fab fa-facebook fa-2x"></span>
+                                    </a>
+                                </div>
+                                <div class="list-inline-item">
+                                    <a href="{{route('login.social',['provider'=>'google'])}}" class=""
+                                       style="color:#ea4535" title="Login via Google">
+                                        <span class="fab fa-google-plus fa-2x"></span>
+                                    </a>
+                                </div>
+                                <div class="list-inline-item">
+                                    <a href="{{route('login.social',['provider'=>'linkedin'])}}" class=""
+                                       style="color:#0073b1" title="Login via Linkedin">
+                                        <span class="fab fa-linkedin fa-2x"></span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <form class="js-validation-signin" action="{{route('login')}}" method="POST">
                             @csrf
