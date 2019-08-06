@@ -9,6 +9,18 @@ class Complaint extends Model
 {
     protected $appends = ['view_count'];
 
+    protected $fillable
+        = [
+            'title',
+            'description',
+            'type',
+            'state',
+            'location',
+            'tags',
+            'anonymous',
+            'public'
+        ];
+
     /**
      * Attribute summarises complaint description
      *
@@ -55,6 +67,7 @@ class Complaint extends Model
 
         return Cache::get($key);
     }
+
     /**
      * Get how long ago complaint was Created
      *
@@ -151,7 +164,8 @@ class Complaint extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function remark(){
+    public function remark()
+    {
         return $this->hasMany('App\Models\Remark');
     }
 }
