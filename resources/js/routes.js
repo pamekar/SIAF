@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 import NProgress from './uiux/js/nprogress.js'
 import Dashboard from './views/Dashboard.vue'
 import Complaints from './views/Complaints.vue'
+import ComplaintsMade from './views/ComplaintsMade.vue'
 import ComplaintsMake from './views/ComplaintsMake.vue'
 import ComplaintsView from './views/ComplaintsView.vue'
 import Contribution from './views/Contribution.vue'
@@ -45,6 +46,11 @@ const routes = [
         path:      '/user/complaints/:id',
         name:      'complaints-view',
         component: ComplaintsView
+    },
+    {
+        path:      '/user/complaints/made',
+        name:      'complaints-made',
+        component: ComplaintsMade
     },
     {
         path:      '/user/contribution',
