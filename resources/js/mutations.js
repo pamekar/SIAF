@@ -2,7 +2,6 @@ import gql from 'graphql-tag';
 
 export const mutations = {
     createComplaint: gql`mutation(
-        $id: ID!
         $title: String
         $description: String
         $type: String
@@ -13,7 +12,6 @@ export const mutations = {
         $public: Boolean
     ){
         createComplaint(
-            id: $id
             title: $title
             description: $description
             type: $type
@@ -23,7 +21,6 @@ export const mutations = {
             anonymous: $anonymous
             public: $public
         ){
-            id
             title
             description
             type
